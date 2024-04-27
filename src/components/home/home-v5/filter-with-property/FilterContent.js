@@ -6,17 +6,37 @@ import "react-input-range/lib/css/index.css";
 import LookingFor from "./LookingFor";
 import Location from "./Location";
 
+const initialValues = {
+  search: "",
+  looking: "",
+  location: "",
+  priceMin: "",
+  priceMax: ""
+};
+
 const FilterContent = () => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState("buy");
+  const [activeTab, setActiveTab] = useState("rent");
+  const [values, setValues] = useState(initialValues);
+
+  const handleInputChange = (e) => {
+    //const name = e.target.name 
+    //const value = e.target.value 
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
   const tabs = [
-    { id: "buy", label: "Buy" },
     { id: "rent", label: "Rent" },
+    { id: "buy", label: "Buy" },
     { id: "sold", label: "Sold" },
   ];
 
@@ -25,7 +45,68 @@ const FilterContent = () => {
   // price range handler
   const handleOnChange = (value) => {
     setPrice({ value });
+    setValues({
+      ...values,
+      priceMin: value.min,
+      priceMax: value.max,
+    });
   };
+
+  const handleOnChangePrice = (value) => {
+    setPrice({ value });
+    setValues({
+      ...values,
+      priceMin: value.min,
+      priceMax: value.max,
+    });
+  };
+  
+  const serializeObject =  async (obj) => {
+    var str = [];
+    for (var p in obj)
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+      }
+    return str.join("&");
+  }
+
+  async function getData(values) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values)
+    };
+    const res = await fetch("http://localhost:7001/properties", requestOptions, {cache: 'no-store'});
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error('Failed to fetch data')
+    }
+    return res.json()
+  }
+
+
+  const searchProperty = async () => {
+    const urls = await serializeObject(values);
+    router.push(`/grid-full-3-col?${urls}`);
+  }
+
+
+
+  const lookingFor = (value) => {
+    setValues({
+      ...values,
+      looking: value,
+    });
+  }
+  
+  const locationFor = (value) => {
+    setValues({
+      ...values,
+      location: value,
+    });
+  }
 
   return (
     <div className="advance-style4 at-home5 mt-100 mt50-lg mb10 mx-auto animate-up-2">
@@ -59,7 +140,9 @@ const FilterContent = () => {
                           className="form-control bgc-f7 bdrs12 ps-0"
                           type="text"
                           name="search"
+                          id="search"
                           placeholder={`Enter Keyword for ${tab.label}`}
+                          onChange={handleInputChange}
                         />
                       </div>
                     </form>
@@ -71,7 +154,7 @@ const FilterContent = () => {
                   <div className="mt-3 mt-md-0 px-0">
                     <div className="bootselect-multiselect">
                       <label className="fz14">Loking For</label>
-                      <LookingFor />
+                      <LookingFor onClick={lookingFor} />
                     </div>
                   </div>
                 </div>
@@ -81,7 +164,7 @@ const FilterContent = () => {
                   <div className="mt-3 mt-md-0">
                     <div className="bootselect-multiselect">
                       <label className="fz14">Location</label>
-                      <Location />
+                      <Location onClick={locationFor} />
                     </div>
                   </div>
                 </div>
@@ -97,7 +180,7 @@ const FilterContent = () => {
                         data-bs-auto-close="outside"
                         style={{ fontSize: "13px" }}
                       >
-                        ${price.value.min} - ${price.value.max}{" "}
+                        ₹{price.value.min} - ₹{price.value.max}{" "}
                         <i className="fas fa-caret-down" />
                       </div>
                       <div className="dropdown-menu">
@@ -113,11 +196,12 @@ const FilterContent = () => {
                             />
                             <div className="d-flex align-items-center">
                               <span id="slider-range-value1">
-                                ${price.value.min}
+                                {/* <input type="text" value={price.value.max} onChange={handleOnChange} /> */}
+                                {price.value.min}
                               </span>
                               <i className="fa-sharp fa-solid fa-minus mx-2 dark-color icon" />
                               <span id="slider-range-value2">
-                                ${price.value.max}
+                                {price.value.max}
                               </span>
                             </div>
                           </div>
@@ -130,18 +214,18 @@ const FilterContent = () => {
 
                 <div className="col-md-6 col-lg-4 col-xl-3">
                   <div className="d-flex align-items-center justify-content-start justify-content-md-center mt-3 mt-md-0">
-                    <button
+                    {/* <button
                       className="advance-search-btn"
                       type="button"
                       data-bs-toggle="modal"
                       data-bs-target="#advanceSeachModal"
                     >
                       <span className="flaticon-settings" /> Advanced
-                    </button>
+                    </button> */}
                     <button
                       className="advance-search-icon ud-btn btn-thm ms-4"
                       type="button"
-                      onClick={() => router.push("/grid-full-3-col")}
+                      onClick={searchProperty}
                     >
                       <span className="flaticon-search" />
                     </button>

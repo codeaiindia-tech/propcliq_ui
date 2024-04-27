@@ -1,21 +1,51 @@
+'use client'
+
+
+
+import { useSearchParams } from "next/navigation";
 import DefaultHeader from "@/components/common/DefaultHeader";
+import Header from "@/components/home/home-v5/Header";
 
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 
 import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/ProperteyFiltering";
 
-import React from "react";
-
-export const metadata = {
-  title: "Gird Full 3 Column || Homez - Real Estate NextJS Template",
-};
+import React, {useEffect, useState} from "react";
 
 const GridFull3Col = () => {
+  const [properties, setProperties] = useState([]);
+  const urlParams = useSearchParams()
+  const paramsObj = Array.from(urlParams.keys()).reduce(
+    (acc, val) => ({ ...acc, [val]: urlParams.get(val) }),
+    {}
+  );
+
+  const getProperties = async (paramsObj) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(paramsObj)
+    };
+    const res = await fetch("http://localhost:7001/properties", requestOptions, {cache: 'no-store'});
+    const prop = await res.json();
+    setProperties(prop.data);
+  }
+
+  console.log("paramsObj:::::", paramsObj)
+  useEffect(() => {
+    try{
+      getProperties(paramsObj);
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+
   return (
     <>
       {/* Main Header Nav */}
       <DefaultHeader />
+      {/* <Header /> */}
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -28,7 +58,7 @@ const GridFull3Col = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title">New York Homes for Sale</h2>
+                <h2 className="title">{paramsObj.search}, {paramsObj.looking}, {paramsObj.location} </h2>
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
                   <a href="#">For Rent</a>
@@ -50,7 +80,7 @@ const GridFull3Col = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering/>
+      <ProperteyFiltering properties={properties} />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

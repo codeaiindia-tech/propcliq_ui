@@ -1,12 +1,9 @@
 "use client";
 import Select from "react-select";
 
-const Location = () => {
+const Location = (props) => {
   const inqueryType = [
-    { value: "New York", label: "New York" },
-    { value: "Los Angeles", label: "Los Angeles" },
-    { value: "London", label: "London" },
-    { value: "Paris", label: "Paris" },
+    { value: "Greater Noida", label: "Greater Noida" }
   ];
 
   const customStyles = {
@@ -23,6 +20,11 @@ const Location = () => {
       };
     },
   };
+
+  const onClick = (event) => {
+    props.onClick(event.value);
+  }
+
   return (
     <>
       <Select
@@ -34,6 +36,7 @@ const Location = () => {
         classNamePrefix="select"
         required
         isClearable={false}
+        onChange={(event) => onClick(event) }
       />
     </>
   );

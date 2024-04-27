@@ -21,7 +21,7 @@ const InvoiceTopData = () => {
       name: "John Doe",
       address: (
         <>
-          329 Queensberry Street, North Melbourne VIC <br /> 3051, Australia.
+          wvc  <br /> 3051, Australia.
         </>
       ),
       columns: "col-sm-6 col-lg-5",

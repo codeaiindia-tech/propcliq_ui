@@ -1,14 +1,16 @@
 "use client";
+import { useState } from "react";
 import Select from "react-select";
 
-const LookingFor = () => {
+const LookingFor = (props) => {
+  const [looking, setLooking] = useState("");
   const inqueryType = [
-    { value: "Apartments", label: "Apartments" },
-    { value: "Bungalow", label: "Bungalow" },
-    { value: "Houses", label: "Houses" },
-    { value: "Office", label: "Office" },
-    { value: "TownHome", label: "TownHome" },
+    { value: "Apartment", label: "Apartment" },
+    { value: "Independent Floor", label: "Independent Floor" },
+    { value: "Independent House", label: "Independent House" },
     { value: "Villa", label: "Villa" },
+    { value: "Plot", label: "Plot" },
+    { value: "Agricultural Land", label: "Agricultural Land" },
   ];
 
   const customStyles = {
@@ -29,17 +31,24 @@ const LookingFor = () => {
       };
     },
   };
+
+
+  const onClick = (event) => {
+    props.onClick(event.value);
+  }
+
   return (
     <>
       <Select
         defaultValue={[inqueryType[0]]}
-        name="colors"
+        name="looking"
         options={inqueryType}
         styles={customStyles}
         className="text-start select-borderless"
         classNamePrefix="select"
         required
         isClearable={false}
+        onChange={(event) => onClick(event) }
       />
     </>
   );

@@ -29,7 +29,7 @@ export default function PropertyListing() {
           <div className="main-title2">
             <h2 className="title text-white">Discover Our Best Deals</h2>
             <p className="paragraph text-white">
-              Aliquam lacinia diam quis lacus euismod
+              We are featuring our best deals of the week which you may miss out.
             </p>
           </div>
         </div>

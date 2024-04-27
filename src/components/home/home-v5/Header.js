@@ -40,17 +40,17 @@ const Header = () => {
                   <div className="logos mr40">
                     <Link className="header-logo logo1" href="/">
                       <Image
-                        width={138}
-                        height={44}
-                        src="/images/header-logo.svg"
+                        width={140}
+                        height={120}
+                        src="/images/propCliq.jpg"
                         alt="Header Logo"
                       />
                     </Link>
                     <Link className="header-logo logo2" href="/">
                       <Image
-                        width={138}
-                        height={44}
-                        src="/images/header-logo2.svg"
+                        width={140}
+                        height={120}
+                        src="/images/prop-cliq.png"
                         alt="Header Logo"
                       />
                     </Link>
@@ -63,7 +63,7 @@ const Header = () => {
               </div>
               {/* End .col-auto */}
 
-              <div className="col-auto">
+              {/* <div className="col-auto">
                 <div className="d-flex align-items-center">
                   <a
                     href="#"
@@ -106,7 +106,7 @@ const Header = () => {
                     />
                   </a>
                 </div>
-              </div>
+              </div> */}
               {/* End .col-auto */}
             </div>
             {/* End .row */}

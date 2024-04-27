@@ -6,7 +6,7 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const FeaturedListings = () => {
+const FeaturedListings = ({properties}) => {
   return (
     <>
       <Swiper
@@ -36,8 +36,8 @@ const FeaturedListings = () => {
           },
         }}
       >
-        {listings.slice(0, 4).map((listing) => (
-          <SwiperSlide key={listing.id}>
+        {properties.slice(0, 4).map((listing) => (
+          <SwiperSlide key={listing._id}>
             <div className="item">
               <div className="listing-style7 mb60">
                 <div className="list-thumb">
@@ -45,17 +45,17 @@ const FeaturedListings = () => {
                     width={382}
                     height={248}
                     className="w-100 h-100 cover"
-                    src={listing.image}
+                    src={listing?.files[0]?.path || "/images/listings/g4-10.jpg"}
                     alt="listings"
                   />
                   <div className="sale-sticker-wrap">
-                    {listing.forRent && (
+                    
                       <div className="list-tag rounded-0 fz12">
                         <span className="flaticon-electricity" />
                         FEATURED
                       </div>
-                    )}
-                    <div className="list-tag2 rounded-0 fz12">FOR SALE</div>
+                    
+                    <div className="list-tag2 rounded-0 fz12">FOR {listing?.service}</div>
                   </div>
 
                   <div className="list-meta">
@@ -72,12 +72,12 @@ const FeaturedListings = () => {
                 </div>
                 <div className="list-content">
                   <h6 className="list-title">
-                    <Link href={`/single-v4/${listing.id}`}>{listing.title}</Link>
+                    <Link href={`/single-v4/${listing?.id}`}>{listing?.address_details?.project}</Link>
                   </h6>
 
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="list-price">
-                      {listing.price} / <span>mo</span>
+                      {listing.monthly_rent} / <span>mo</span>
                     </div>
                     <div className="list-meta2 d-flex align-items-center">
                       <a href="#" className="mr10">

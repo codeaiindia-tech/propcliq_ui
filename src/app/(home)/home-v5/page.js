@@ -17,8 +17,31 @@ import PropertyListing from "@/components/home/home-v5/PropertyListing";
 export const metadata = {
   title: "Home v5 || Homez - Real Estate NextJS Template",
 };
+export const revalidate = 0;
 
-const Home_V5 = () => {
+async function getData() {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({})
+  };
+  const res = await fetch("http://localhost:7001/properties", requestOptions, {cache: 'no-store'});
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+ 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+ 
+  // console.log("res.json()", res.json())
+
+  return res.json()
+}
+
+const Home_V5 = async () => {
+  let properties = await getData();
+  // console.log("properties ::", properties);
   return (
     <>
       {/* Main Header Nav */}
@@ -77,7 +100,7 @@ const Home_V5 = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                <FeaturedListings />
+                <FeaturedListings properties={properties.data} />
               </div>
             </div>
           </div>
@@ -91,9 +114,9 @@ const Home_V5 = () => {
           <div className="row" data-aos="fade-up" data-aos-delay="0">
             <div className="col-lg-6 mx-auto">
               <div className="main-title2 text-center">
-                <h2 className="title">Explore Apartment Types</h2>
+                <h2 className="title">Explore Your Type</h2>
                 <p className="paragraph">
-                  Get some Inspirations from 1800+ skills
+                  Explore from our 1000+ options
                 </p>
               </div>
             </div>
@@ -117,9 +140,9 @@ const Home_V5 = () => {
               data-wow-delay="300ms"
             >
               <div className="main-title text-center">
-                <h2 className="title">See How Realton Can Help</h2>
+                <h2 className="title">Why PropCliQ?</h2>
                 <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
+                  How we are making you job easy
                 </p>
               </div>
             </div>
@@ -145,7 +168,7 @@ const Home_V5 = () => {
               <div className="main-title2">
                 <h2 className="title">Properties by Cities</h2>
                 <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
+                  Following are the demanded cities for exploring your property
                 </p>
               </div>
             </div>
@@ -153,7 +176,7 @@ const Home_V5 = () => {
 
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="/map-v4">
+                <Link className="ud-btn2" href="">   {/*/map-v4"> */}
                   See All Cities
                   <i className="fal fa-arrow-right-long" />
                 </Link>
@@ -189,9 +212,9 @@ const Home_V5 = () => {
                 data-aos="fade-up"
                 data-aos-delay="300"
               >
-                <h2 className="title">People Love Living with Realton</h2>
+                <h2 className="title">People are loving our service</h2>
                 <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
+                 Please experience yourself and share your thoughts
                 </p>
               </div>
             </div>

@@ -38,7 +38,7 @@ const PropertiesByCities = () => {
           },
         }}
       >
-        {cities.slice(23, 29).map((city) => (
+        {cities.slice(0, 9).map((city) => (
           <SwiperSlide key={city.id}>
             <Link href="/map-v4" className="item">
               <div className="apartment-style1 mb30">

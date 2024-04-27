@@ -1,25 +1,24 @@
-body{
-.menuActive{
-    text-decoration: none;
-    color:#eb6753 !important;
-}}
+body {
+    .menuActive {
+        text-decoration: none;
+        color: var(--primary-theme_color) !important;
+    }
+}
 
-.listCustom{
-    &.listing-type{
+.listCustom {
+    &.listing-type {
         display: flex;
-        .list-content{
+        .list-content {
             flex: 1 !important;
-            .topFive{
+            .topFive {
                 top: 5px;
             }
         }
-        .list-thumb{
+        .list-thumb {
             flex: 1 !important;
         }
     }
 }
-.cursor{
+.cursor {
     cursor: pointer;
 }
-
-

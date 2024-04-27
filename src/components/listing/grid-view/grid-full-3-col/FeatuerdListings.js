@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const FeaturedListings = ({ data, colstyle }) => {
+  console.log("data:::::", data);
   return (
     <>
       {data.map((listing) => (
@@ -26,7 +27,7 @@ const FeaturedListings = ({ data, colstyle }) => {
                 height={248}
                 className="w-100  cover"
                 style={{ height: "230px" }}
-                src={listing.image}
+                src={listing?.files[0]?.path || "/images/listings/g4-10.jpg"}
                 alt="listings"
               />
               <div className="sale-sticker-wrap">
@@ -39,7 +40,7 @@ const FeaturedListings = ({ data, colstyle }) => {
               </div>
 
               <div className="list-price">
-                {listing.price} / <span>mo</span>
+                {listing.monthly_rent} / <span>mo</span>
               </div>
             </div>
             <div className="list-content">
@@ -60,7 +61,7 @@ const FeaturedListings = ({ data, colstyle }) => {
               </div>
               <hr className="mt-2 mb-2" />
               <div className="list-meta2 d-flex justify-content-between align-items-center">
-                <span className="for-what">For Rent</span>
+                <span className="for-what">For {listing.service}</span>
                 <div className="icons d-flex align-items-center">
                   <a href="#">
                     <span className="flaticon-fullscreen" />

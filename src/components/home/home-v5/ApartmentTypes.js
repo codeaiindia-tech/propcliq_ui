@@ -5,39 +5,39 @@ import React from "react";
 const ApartmentTypes = () => {
   const apartmentData = [
     {
-      city: "Los Angeles",
+      city: "Independent Farmhouses and Villas",
       imageSrc: "/images/listings/city-listing-5.png",
-      propertyCount: 12,
+      propertyCount: 16,
       className: "col-lg-6",
     },
     {
-      city: "Miami",
+      city: "Builder Flats",
       imageSrc: "/images/listings/city-listing-6.png",
-      propertyCount: 12,
+      propertyCount: 42,
       className: "col-6 col-lg-3",
     },
     {
-      city: "New York",
+      city: "Apartments",
       imageSrc: "/images/listings/city-listing-7.png",
-      propertyCount: 12,
+      propertyCount: 24,
       className: "col-6 col-lg-3",
     },
     {
-      city: "Chicago",
+      city: "Indpendent houses",
       imageSrc: "/images/listings/city-listing-8.png",
       propertyCount: 12,
       className: "col-6 col-lg-3",
     },
     {
-      city: "Chicago",
+      city: "Studio-Apartments",
       imageSrc: "/images/listings/city-listing-9.png",
-      propertyCount: 12,
+      propertyCount: 19,
       className: "col-6 col-lg-3",
     },
     {
-      city: "Chicago",
+      city: "Co-living",
       imageSrc: "/images/listings/city-listing-10.png",
-      propertyCount: 12,
+      propertyCount: 3,
       className: "col-lg-6",
     },
   ];

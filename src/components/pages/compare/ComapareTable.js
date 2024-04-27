@@ -28,8 +28,8 @@ const ComapareTable = () => {
                   src="/images/listings/compare-1.jpg"
                   alt="compare-1"
                 />
-                <div className="h6 price mt-1">$14,000 / mo</div>
-                <p className="address mb-0">California City, CA, USA</p>
+                <div className="h6 price mt-1">$14,000</div>
+                <p className="address mb-0">Noida sector-12, NCR</p>
               </div>
             </div>
           </th>
@@ -45,8 +45,8 @@ const ComapareTable = () => {
                   src="/images/listings/compare-1.jpg"
                   alt="compare-1"
                 />
-                <div className="h6 price mt-1">$14,000 / mo</div>
-                <p className="address mb-0">California City, CA, USA</p>
+                <div className="h6 price mt-1">$14,000 </div>
+                <p className="address mb-0">Noida sector-12, NCR</p>
               </div>
             </div>
           </th>
@@ -62,8 +62,8 @@ const ComapareTable = () => {
                   src="/images/listings/compare-1.jpg"
                   alt="compare-1"
                 />
-                <div className="h6 price mt-1">$14,000 / mo</div>
-                <p className="address mb-0">California City, CA, USA</p>
+                <div className="h6 price mt-1">$14,000</div>
+                <p className="address mb-0">Noida sector-12, NCR</p>
               </div>
             </div>
           </th>

@@ -59,7 +59,7 @@ const FilterContent = () => {
                           className="form-control bgc-f7 bdrs12 ps-0"
                           type="text"
                           name="search"
-                          placeholder={`Enter Keyword for ${tab.label}`}
+                          placeholder={`Enter Keyword for 1  1 11  ${tab.label}`}
                         />
                       </div>
                     </form>

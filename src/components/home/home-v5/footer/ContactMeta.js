@@ -14,7 +14,7 @@ const ContactMeta = () => {
     },
     {
       text: "Need Live Support?",
-      info: "hi@homez.com",
+      info: "info@propcliq.com",
       link: "mailto:hi@homez.com",
     },
   ];

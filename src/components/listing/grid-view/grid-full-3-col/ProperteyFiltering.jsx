@@ -13,7 +13,7 @@ import Pagination from '../../Pagination'
 import PaginationTwo from "../../PaginationTwo";
 
 
-export default function ProperteyFiltering() {
+export default function ProperteyFiltering(props) {
   const [filteredData, setFilteredData] = useState([]);
 
     const [currentSortingOption, setCurrentSortingOption] = useState('Newest')
@@ -303,12 +303,12 @@ export default function ProperteyFiltering() {
           {/* End TopFilterBar */}
 
           <div className="row">
-            <FeaturedListings  colstyle ={colstyle}  data={pageItems} />
+            <FeaturedListings  colstyle ={colstyle}  data={props.properties} />
           </div>
           {/* End .row */}
 
           <div className="row">
-          <PaginationTwo pageCapacity={9} data={sortedFilteredData} pageNumber={pageNumber} setPageNumber={setPageNumber}/>
+          {/* <PaginationTwo pageCapacity={9} data={sortedFilteredData} pageNumber={pageNumber} setPageNumber={setPageNumber}/> */}
           
           </div>
           {/* End .row */}
