@@ -2,7 +2,7 @@ import Home_V5 from "./(home)/home-v5/page";
 import Wrapper from "./layout-wrapper/wrapper";
 
 export const metadata = {
-  title: "Home v1 || Homez - Real Estate NextJS Template",
+  title: "Prop Cliq",
 };
 
 export default function MainRoot() {
