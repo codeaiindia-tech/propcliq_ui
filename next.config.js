@@ -9,5 +9,8 @@ const nextConfig = {
           },
         ],
     },
+    env: {
+      baseUrl: 'https://api.propcliq.com',
+    },
 };
 module.exports = nextConfig;

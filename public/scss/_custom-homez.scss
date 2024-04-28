@@ -270,7 +270,7 @@ header.nav-homepage-style.sticky.at-home3 .sidemenu-btn .img-1 {
 // light header
 .nav-homepage-style.light-header {
     position: static;
-    background-color: #fff;
+    background-color: #8881818c;
     -webkit-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
     box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
     &.sticky {
@@ -304,11 +304,11 @@ header.nav-homepage-style.light-header .ace-responsive-menu a {
 // home 5 slider thumbs
 .custom_thumbs {
     position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 20%;
+    top: 65%;
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    right: 50%;
     z-index: 1;
     @media (max-width: 1199px) {
         left: 40px;

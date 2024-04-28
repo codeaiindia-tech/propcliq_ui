@@ -23,8 +23,8 @@ const Footer = () => {
             <div className="footer-widget mb-4 mb-lg-5">
               <Link className="footer-logo" href="/">
               <Image
-                width={140}
-                height={120}
+                width={90}
+                height={75}
                 src="/images/propCliq.jpg"
                 alt="Header Logo"
               />

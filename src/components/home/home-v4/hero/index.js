@@ -18,8 +18,8 @@ const Hero = () => {
 
         <div className="home4-floatin-img">
           <Image
-            width={140}
-            height={120}
+            width={90}
+            height={75}
             className="img-1 spin-left d-none d-xl-block contain"
             src="/images/about/element-10.png"
             alt="image"

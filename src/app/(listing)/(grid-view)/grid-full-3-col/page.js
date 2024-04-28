@@ -27,7 +27,7 @@ const GridFull3Col = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(paramsObj)
     };
-    const res = await fetch("http://localhost:7001/properties", requestOptions, {cache: 'no-store'});
+    const res = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {cache: 'no-store'});
     const prop = await res.json();
     setProperties(prop.data);
   }

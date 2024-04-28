@@ -76,7 +76,7 @@ const FilterContent = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values)
     };
-    const res = await fetch("http://localhost:7001/properties", requestOptions, {cache: 'no-store'});
+    const res = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {cache: 'no-store'});
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
     if (!res.ok) {

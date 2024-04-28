@@ -40,16 +40,16 @@ const Header = () => {
                   <div className="logos mr40">
                     <Link className="header-logo logo1" href="/">
                       <Image
-                        width={140}
-                        height={120}
+                        width={90}
+                        height={75}
                         src="/images/propCliq.jpg"
                         alt="Header Logo"
                       />
                     </Link>
                     <Link className="header-logo logo2" href="/">
                       <Image
-                        width={140}
-                        height={120}
+                        width={90}
+                        height={75}
                         src="/images/prop-cliq.png"
                         alt="Header Logo"
                       />
@@ -63,19 +63,17 @@ const Header = () => {
               </div>
               {/* End .col-auto */}
 
-              {/* <div className="col-auto">
+              <div className="col-auto">
                 <div className="d-flex align-items-center">
                   <a
-                    href="#"
+                    href="https://frontend.propcliq.com"
                     className="login-info d-flex align-items-center"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginSignupModal"
                     role="button"
                   >
                     <i className="far fa-user-circle fz16 me-2" />{" "}
                     <span className="d-none d-xl-block">Login / Register</span>
                   </a>
-                  <Link
+                  {/* <Link
                     className="ud-btn btn-white add-property bdrs12 mx-2 mx-xl-4 border-0"
                     href="/dashboard-add-property"
                   >
@@ -104,9 +102,9 @@ const Header = () => {
                       src="/images/icon/nav-icon-dark.svg"
                       alt="humberger menu"
                     />
-                  </a>
+                  </a> */}
                 </div>
-              </div> */}
+              </div>
               {/* End .col-auto */}
             </div>
             {/* End .row */}
