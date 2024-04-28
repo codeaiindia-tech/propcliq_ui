@@ -39,7 +39,7 @@ const GridFull3Col = () => {
     } catch (err) {
       console.log(err)
     }
-  }, [])
+  }, [paramsObj])
 
   return (
     <>

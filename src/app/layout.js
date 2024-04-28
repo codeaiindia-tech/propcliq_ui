@@ -5,7 +5,7 @@ import "../../node_modules/react-modal-video/scss/modal-video.scss";
 import "aos/dist/aos.css";
 import "../../public/scss/main.scss";
 import { DM_Sans, Poppins } from "next/font/google";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
 if (typeof window !== "undefined") {
   import("bootstrap");
@@ -35,14 +35,16 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body
-        className={`body  ${poppins.variable} ${dmSans.variable}`}
-        cz-shortcut-listen="false"
-      >
-        <div className="wrapper ovh">{children}</div>
+      <Suspense>
+        <body
+          className={`body  ${poppins.variable} ${dmSans.variable}`}
+          cz-shortcut-listen="false"
+        >
+          <div className="wrapper ovh">{children}</div>
 
-        <ScrollToTop />
-      </body>
+          <ScrollToTop />
+        </body>
+      </Suspense>
     </html>
   );
 }
