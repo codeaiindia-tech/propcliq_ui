@@ -22,7 +22,7 @@ const MobileMenu = () => {
                 <Image
                   width={25}
                   height={9}
-                  src="/images/mobile-dark-nav-icon.svg"
+                  src="/images/prop-cliq.png"
                   alt="mobile icon"
                 />
               </a>
@@ -30,11 +30,11 @@ const MobileMenu = () => {
                 <Image
                   width={138}
                   height={44}
-                  src="/images/header-logo2.svg"
+                  src="/images/prop-cliq.png"
                   alt="logo"
                 />
               </Link>
-              <Link href="/login">
+              <Link href="#">
                 <span className="icon fz18 far fa-user-circle" />
               </Link>
             </div>
