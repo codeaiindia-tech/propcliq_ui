@@ -23,41 +23,8 @@ const images = [
   },
 ];
 
-const PropertyGallery = ({ id, data }) => {
-  const firstImage = data.files.filter((item) => {
-    if (item.default) {
-      return item;
-    }
-  });
-
-  console.log("firstImage[0].src", firstImage[0].path)
-
-  const images = data.files.map((item) => {
-    // if(item.default){
-    return {
-      src: item.path,
-      alt: "Property Image",
-    };
-    // }
-  });
-  // const images = [
-  //   {
-  //     src: "/images/listings/listing-single-2.jpg",
-  //     alt: "2.jpg",
-  //   },
-  //   {
-  //     src: "/images/listings/listing-single-3.jpg",
-  //     alt: "3.jpg",
-  //   },
-  //   {
-  //     src: "/images/listings/listing-single-4.jpg",
-  //     alt: "4.jpg",
-  //   },
-  //   {
-  //     src: "/images/listings/listing-single-5.jpg",
-  //     alt: "5.jpg",
-  //   },
-  // ];
+const ProjectGallery = ({id}) => {
+  const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
   return (
     <>
       <Gallery>
@@ -65,14 +32,14 @@ const PropertyGallery = ({ id, data }) => {
           <div className="sp-img-content mb15-md">
             <div className="popup-img preview-img-1 sp-img">
               <Item
-                original={firstImage[0].path}
-                thumbnail={firstImage[0].path}
+                original={'/images/listings/listing-single-1.jpg'}
+                thumbnail={'/images/listings/listing-single-1.jpg'}
                 width={610}
                 height={510}
               >
                 {({ ref, open }) => (
                   <Image
-                    src={firstImage[0].path}
+                    src={'/images/listings/listing-single-1.jpg'}
                     width={591}
                     height={558}
                     ref={ref}
@@ -126,4 +93,4 @@ const PropertyGallery = ({ id, data }) => {
   );
 };
 
-export default PropertyGallery;
+export default ProjectGallery;

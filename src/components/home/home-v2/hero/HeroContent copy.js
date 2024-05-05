@@ -19,6 +19,18 @@ const HeroContent = () => {
 
   return (
     <div className="advance-style2 mt80 mt0-md mb60 mx-auto" data-aos="fade-up">
+      <ul className="nav nav-tabs p-0">
+        {tabs.map((tab) => (
+          <li className="nav-item" key={tab.id}>
+            <button
+              className={`nav-link ${activeTab === tab.id ? "active" : ""}`}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              {tab.label}
+            </button>
+          </li>
+        ))}
+      </ul>
       <div className="tab-content">
         {tabs.map((tab) => (
           <div

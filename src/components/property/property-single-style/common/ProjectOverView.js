@@ -2,40 +2,40 @@ import listings from "@/data/listings";
 import React from "react";
 
 
-const OverView = ({id, data}) => {
-  // const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
+const ProjectOverView = ({id}) => {
+  const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
   const overviewData = [
     {
       icon: "flaticon-bed",
       label: "Bedroom",
-      value: data?.bhk,
+      value: data.bed,
     },
     {
       icon: "flaticon-shower",
       label: "Bath",
-      value: data?.bathroom,
+      value: data.bath,
     },
     {
       icon: "flaticon-event",
       label: "Year Built",
-      value: data?.built_up_area,
+      value: data.yearBuilding,
     },
     {
       icon: "flaticon-garage",
-      label: "Parking",
-      value: data?.covered_parking,
+      label: "Garage",
+      value: "2",
       xs: true,
     },
     {
       icon: "flaticon-expand",
       label: "Sqft",
-      value: data.built_up_area,
+      value: data.sqft,
       xs: true,
     },
     {
       icon: "flaticon-home-1",
       label: "Property Type",
-      value: data.carpet_area,
+      value: data.propertyType,
     },
   ];
   
@@ -60,4 +60,4 @@ const OverView = ({id, data}) => {
   );
 };
 
-export default OverView;
+export default ProjectOverView;

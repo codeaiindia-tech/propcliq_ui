@@ -1,4 +1,5 @@
-// "use client";
+"use client";
+import { useState, useEffect } from 'react';
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
@@ -25,32 +26,79 @@ import PropertyGallery from "@/components/property/property-single-style/single-
 import React from "react";
 import MortgageCalculator from "@/components/property/property-single-style/common/MortgageCalculator";
 import WalkScore from "@/components/property/property-single-style/common/WalkScore";
-
-export const metadata = {
-  title: "Property Single V1 || Homez - Real Estate NextJS Template",
-};
+import Image from "next/image";
+import Link from "next/link";
+// export const metadata = {
+//   title: "Property Single V1 || Homez - Real Estate NextJS Template",
+// };
 
 const SingleV1 = ({params}) => {
+
+  const [data, setData] = useState(null);
+  const [navbar, setNavbar] = useState(false);
+  useEffect(() => {
+    console.log("paraamst ::::::", params)
+    const fetchData = async () => {
+      const response = await fetch(`${process.env.baseUrl}/project/getProperty/${params.id}`);
+      const data = await response.json();
+      setData(data);
+    };
+
+    fetchData();
+  }, [params]);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 10) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, []);
+
+
   return (
     <>
       {/* Main Header Nav */}
-      <DefaultHeader />
+      {/* <DefaultHeader /> */}
+
+      {/* Main Header Nav */}
+      {!navbar ? <DefaultHeader /> : null}
       {/* End Main Header Nav */}
+      {/* {JSON.stringify(data.data)} */}
 
       {/* Mobile Nav  */}
       <MobileMenu />
       {/* End Mobile Nav  */}
 
       {/* Property All Single V1 */}
-      <section className="pt60 pb90 bgc-f7">
+      { data ? <section className="pt60 pb90 bgc-f7">
         <div className="container">
-          <div className="row">
-            <PropertyHeader id={params.id} />
+        <div className={`row ${navbar ? "sticky-inside-header" : ""}`}>
+        <Link
+                className="header-logo logo1"
+                href="/"
+                style={{ position: "absolute", left: "-300px" }}
+              >
+                <Image
+                  width={90}
+                  height={75}
+                  src="/images/propCliq.jpg"
+                  alt="Header Logo"
+                />
+              </Link>
+            <PropertyHeader id={params.id} data={data.data} />
           </div>
           {/* End .row */}
 
           <div className="row mb30 mt30">
-            <PropertyGallery id={params.id}/>
+            <PropertyGallery id={params.id} data={data.data}/>
           </div>
           {/* End .row */}
 
@@ -59,19 +107,19 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Overview</h4>
                 <div className="row">
-                  <OverView />
+                  <OverView data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Property Description</h4>
-                <ProperytyDescriptions />
+                <ProperytyDescriptions data={data.data} />
                 {/* End property description */}
 
                 <h4 className="title fz17 mb30 mt50">Property Details</h4>
                 <div className="row">
-                  <PropertyDetails />
+                  <PropertyDetails data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -79,7 +127,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30 mt30">Address</h4>
                 <div className="row">
-                  <PropertyAddress />
+                  <PropertyAddress data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -87,7 +135,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Features &amp; Amenities</h4>
                 <div className="row">
-                  <PropertyFeaturesAminites />
+                  <PropertyFeaturesAminites data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -95,7 +143,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Energy Class</h4>
                 <div className="row">
-                  <EnergyClass />
+                  <EnergyClass data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -105,7 +153,7 @@ const SingleV1 = ({params}) => {
                 <div className="row">
                   <div className="col-md-12">
                     <div className="accordion-style1 style2">
-                      <FloorPlans />
+                      <FloorPlans data={data.data} />
                     </div>
                   </div>
                 </div>
@@ -115,7 +163,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 ">
                 <h4 className="title fz17 mb30">Video</h4>
                 <div className="row">
-                  <PropertyVideo />
+                  <PropertyVideo data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -123,7 +171,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">360° Virtual Tour</h4>
                 <div className="row">
-                  <VirtualTour360 />
+                  <VirtualTour360 data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -131,7 +179,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">What&apos;s Nearby?</h4>
                 <div className="row">
-                  <PropertyNearby />
+                  <PropertyNearby data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -143,7 +191,7 @@ const SingleV1 = ({params}) => {
                     <h4 className="fw400 mb20">
                       10425 Tabor St Los Angeles CA 90034 USA
                     </h4>
-                    <WalkScore />
+                    <WalkScore data={data.data} />
                   </div>
                 </div>
               </div>
@@ -152,14 +200,14 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Mortgage Calculator</h4>
                 <div className="row">
-                  <MortgageCalculator />
+                  <MortgageCalculator data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <div className="row">
-                  <PropertyViews />
+                  <PropertyViews data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -167,21 +215,21 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Home Value</h4>
                 <div className="row">
-                  <HomeValueChart />
+                  <HomeValueChart data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Get More Information</h4>
-                <InfoWithForm />
+                <InfoWithForm data={data.data} />
               </div>
               {/* End .ps-widget */}
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <div className="row">
                   {/* <AllComments /> */}
-                  <AllReviews />
+                  <AllReviews data={data.data} />
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -189,7 +237,7 @@ const SingleV1 = ({params}) => {
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <h4 className="title fz17 mb30">Leave A Review</h4>
                 <div className="row">
-                  <ReviewBoxForm />
+                  <ReviewBoxForm data={data.data}/>
                 </div>
               </div>
               {/* End .ps-widget */}
@@ -201,14 +249,14 @@ const SingleV1 = ({params}) => {
                 <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
                   <h4 className="form-title mb5">Schedule a tour</h4>
                   <p className="text">Choose your preferred day</p>
-                  <ScheduleTour />
+                  <ScheduleTour data={data.data}/>
                 </div>
                 {/* End .Schedule a tour */}
 
                 <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
                   <div className="widget-wrapper mb-0">
                     <h6 className="title fz17 mb30">Get More Information</h6>
-                    <ContactWithAgent />
+                    <ContactWithAgent data={data.data}/>
                   </div>
                 </div>
               </div>
@@ -264,7 +312,7 @@ const SingleV1 = ({params}) => {
           {/* End .row */}
         </div>
         {/* End .container */}
-      </section>
+      </section> : null }
       {/* End Property All Single V1  */}
 
       {/* Start Our Footer */}

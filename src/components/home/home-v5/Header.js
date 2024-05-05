@@ -7,14 +7,32 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const Header = () => {
+// /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v2/hero/HeroContent.js
+// /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v5/filter-with-property/FilterContent.js
+import HeroContent from "../home-v2/hero/HeroContent";
+import FilterContent from "./filter-with-property/FilterContent";
+
+const Header = ({onChildClick}) => {
+
+  console.log("props:::::", onChildClick)
+
   const [navbar, setNavbar] = useState(false);
+  const [menubar, setMenubar] = useState(false);
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
+      // props.sendDataToParent(navbar);
+
+      if (window.scrollY >= 500) {
+        onChildClick(true);
+        setMenubar(true)
+      }
     } else {
       setNavbar(false);
+      // props.sendDataToParent(navbar);
+      onChildClick(false);
+      setMenubar(false)
     }
   };
 
@@ -23,22 +41,23 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", changeBackground);
     };
-  }, []);
+  }, [changeBackground]);
 
   return (
     <>
       <header
         className={`header-nav nav-homepage-style main-menu  ${
-          navbar ? "sticky slideInDown animated" : ""
+          navbar ? "slideInDown animated" : ""
         }`}
       >
-        <nav className="posr">
+        
+        {!menubar ? <nav className="posr">
           <div className="container posr menu_bdrt1">
             <div className="row align-items-center justify-content-between">
               <div className="col-auto">
                 <div className="d-flex align-items-center justify-content-between">
                   <div className="logos mr40">
-                    <Link className="header-logo logo1" href="/">
+                    <Link className="header-logo logo1" href="/" style={{'position':'relative', 'left':'-300px'}}>
                       <Image
                         width={90}
                         height={75}
@@ -55,13 +74,10 @@ const Header = () => {
                       />
                     </Link>
                   </div>
-                  {/* End Logo */}
 
                   <MainMenu />
-                  {/* End Main Menu */}
                 </div>
               </div>
-              {/* End .col-auto */}
 
               <div className="col-auto">
                 <div className="d-flex align-items-center">
@@ -73,7 +89,7 @@ const Header = () => {
                     <i className="far fa-user-circle fz16 me-2" />{" "}
                     <span className="d-none d-xl-block">Login / Register</span>
                   </a>
-                  {/* <Link
+                  <Link
                     className="ud-btn btn-white add-property bdrs12 mx-2 mx-xl-4 border-0"
                     href="/dashboard-add-property"
                   >
@@ -102,14 +118,46 @@ const Header = () => {
                       src="/images/icon/nav-icon-dark.svg"
                       alt="humberger menu"
                     />
-                  </a> */}
+                  </a>
                 </div>
               </div>
-              {/* End .col-auto */}
             </div>
-            {/* End .row */}
           </div>
-        </nav>
+        </nav> : <nav className="posr">
+          <div className="container">
+          <div className="container posr menu_bdrt1">
+            <div className="row align-items-center justify-content-between">
+              <div className="col-auto">
+                <div className="d-flex align-items-center justify-content-between">
+                  <div className="logos mr40">
+                    <Link className="header-logo logo1" style={{'position':'absolute', 'left':'-300px'}} href="/">
+                      <Image
+                        width={90}
+                        height={75}
+                        src="/images/propCliq.jpg"
+                        alt="Header Logo"
+                      />
+                    </Link>
+                    <Link className="header-logo logo2" href="/">
+                      <Image
+                        width={90}
+                        height={75}
+                        src="/images/prop-cliq.png"
+                        alt="Header Logo"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="inner-banner-style1 text-center" style={{"marginTop": "80px"}}><FilterContent /></div>
+              </div>
+            </div>
+          </div>
+        </nav> }
       </header>
       {/* End Header */}
 

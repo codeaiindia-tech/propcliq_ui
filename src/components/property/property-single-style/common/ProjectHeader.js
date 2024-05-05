@@ -3,29 +3,25 @@
 import listings from "@/data/listings";
 import React from "react";
 
-const PropertyHeader = ({ id, data }) => {
+const ProjectHeader = ({ id, projectData }) => {
+  const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
   return (
     <>
       <div className="col-lg-8">
         <div className="single-property-content mb30-md">
-          <h2 className="sp-lg-title">{data?.bhk} {data?.property_type}</h2>
+          <h2 className="sp-lg-title">{projectData.display_name}</h2>
           <div className="pd-meta mb15 d-md-flex align-items-center">
             <p className="text fz15 mb-0 bdrr1 pr10 bdrrn-sm">
-            {data?.address_details?.project}, {data?.address_details?.area}
+            {projectData?.state}, {projectData?.locality}
             </p>
-            <a
-              className="ff-heading text-thm fz15 bdrr1 pr10 ml0-sm ml10 bdrrn-sm"
-              href="#"
-            >
-              <i className="fas fa-circle fz10 pe-2" />
-              For {data?.service ? "rent" : "sale"}
-            </a>
             <a
               className="ff-heading bdrr1 fz15 pr10 ml10 ml0-sm bdrrn-sm"
               href="#"
             >
               <i className="far fa-clock pe-2" />
-              {data?.age_of_property} years ago
+              {Number(new Date().getFullYear()) -
+                Number(data.yearBuilding)}{" "}
+              years ago
             </a>
             <a className="ff-heading ml10 ml0-sm fz15" href="#">
               <i className="flaticon-fullscreen pe-2 align-text-top" />
@@ -35,15 +31,15 @@ const PropertyHeader = ({ id, data }) => {
           <div className="property-meta d-flex align-items-center">
             <a className="text fz15" href="#">
               <i className="flaticon-bed pe-2 align-text-top" />
-              {data?.bhk?.replace('BHK', '')} bed
+              {data.bed} bed
             </a>
             <a className="text ml20 fz15" href="#">
               <i className="flaticon-shower pe-2 align-text-top" />
-              {data?.bathroom} bath
+              {data.bath} bath
             </a>
             <a className="text ml20 fz15" href="#">
               <i className="flaticon-expand pe-2 align-text-top" />
-              {data?.built_up_area} sqft
+              {data.sqft} sqft
             </a>
           </div>
         </div>
@@ -67,9 +63,9 @@ const PropertyHeader = ({ id, data }) => {
                 <span className="flaticon-printer" />
               </a>
             </div>
-            <h3 className="price mb-0">{data?.show_price_on_website}</h3>
+            <h3 className="price mb-0">{projectData?.show_price_on_website}</h3>
             <p className="text space fz15">
-              {data?.project_size}
+              {projectData?.project_size}
             </p>
           </div>
         </div>
@@ -79,4 +75,4 @@ const PropertyHeader = ({ id, data }) => {
   );
 };
 
-export default PropertyHeader;
+export default ProjectHeader;

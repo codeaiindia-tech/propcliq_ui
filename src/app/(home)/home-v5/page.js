@@ -1,3 +1,8 @@
+"use client"; 
+  
+// Import useState from 'react' library 
+import { useState } from "react"; 
+
 import Explore from "@/components/common/Explore";
 import Footer from "@/components/home/home-v5/footer";
 import MobileMenu from "@/components/common/mobile-menu";
@@ -14,9 +19,9 @@ import Cta from "@/components/home/home-v5/Cta";
 import Link from "next/link";
 import PropertyListing from "@/components/home/home-v5/PropertyListing";
 
-export const metadata = {
-  title: "Home v5 || Homez - Real Estate NextJS Template",
-};
+// export const metadata = {
+//   title: "Home v5 || Homez - Real Estate NextJS Template",
+// };
 export const revalidate = 0;
 
 async function getData() {
@@ -39,13 +44,26 @@ async function getData() {
   return res.json()
 }
 
-const Home_V5 = async () => {
-  let properties = await getData();
+const handleChildClick = (newMessage) => {
+  setMessage(newMessage);
+};
+
+const Home_V5 = () => {
+  // let properties = getData();
   // console.log("properties ::", properties);
+
+  const [message, setMessage] = useState(false);
+  const handleChildClick = (newMessage) => {
+    setMessage(newMessage);
+  };
+
+
   return (
     <>
       {/* Main Header Nav */}
-      <Header />
+      {/* <p>Message from Child: {JSON.stringify(message)}</p> */}
+      <Header onChildClick={handleChildClick}  />
+      {/* <>{JSON.stringify(sendDataToParent)}</> */}
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -65,7 +83,7 @@ const Home_V5 = async () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <FilterWithProperties />
+              {!message ? <FilterWithProperties /> : null }
             </div>
           </div>
           {/* End .row */}
@@ -100,7 +118,7 @@ const Home_V5 = async () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                <FeaturedListings properties={properties.data} />
+                <FeaturedListings properties={[]} />
               </div>
             </div>
           </div>
