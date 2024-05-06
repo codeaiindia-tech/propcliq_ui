@@ -29,7 +29,7 @@ const Header = () => {
     <>
       <header
         className={`header-nav nav-homepage-style at-home3  main-menu ${
-          navbar ? "sticky slideInDown animated" : ""
+          navbar ? "sticky" : ""
         }`}
       >
         <nav className="posr">

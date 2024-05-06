@@ -5,7 +5,7 @@ import SidebarPanel from "@/components/common/sidebar-panel";
 import LoginSignupModal from "@/components/common/login-signup-modal";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 // /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v2/hero/HeroContent.js
 // /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v5/filter-with-property/FilterContent.js
@@ -19,7 +19,7 @@ const Header = ({onChildClick}) => {
   const [navbar, setNavbar] = useState(false);
   const [menubar, setMenubar] = useState(false);
 
-  const changeBackground = () => {
+  const changeBackground = useCallback(() => {
     if (window.scrollY >= 10) {
       setNavbar(true);
       // props.sendDataToParent(navbar);
@@ -34,14 +34,14 @@ const Header = ({onChildClick}) => {
       onChildClick(false);
       setMenubar(false)
     }
-  };
+  });
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
     return () => {
       window.removeEventListener("scroll", changeBackground);
     };
-  }, [changeBackground]);
+  }, []);
 
   return (
     <>
@@ -88,36 +88,6 @@ const Header = ({onChildClick}) => {
                   >
                     <i className="far fa-user-circle fz16 me-2" />{" "}
                     <span className="d-none d-xl-block">Login / Register</span>
-                  </a>
-                  <Link
-                    className="ud-btn btn-white add-property bdrs12 mx-2 mx-xl-4 border-0"
-                    href="/dashboard-add-property"
-                  >
-                    Add Property
-                    <i className="fal fa-arrow-right-long" />
-                  </Link>
-                  <a
-                    className="sidemenu-btn filter-btn-right"
-                    href="#"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#SidebarPanel"
-                    aria-controls="SidebarPanelLabel"
-                  >
-                    <Image
-                      width={25}
-                      height={9}
-                      className="img-1"
-                      src="/images/icon/nav-icon-white.svg"
-                      alt="humberger menu"
-                    />
-
-                    <Image
-                      width={25}
-                      height={9}
-                      className="img-2"
-                      src="/images/icon/nav-icon-dark.svg"
-                      alt="humberger menu"
-                    />
                   </a>
                 </div>
               </div>

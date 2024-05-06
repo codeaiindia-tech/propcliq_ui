@@ -1,6 +1,6 @@
 import React from "react";
 
-const PropertyDetails = () => {
+const PropertyDetails = ({data}) => {
   const columns = [
     [
       {
@@ -26,11 +26,11 @@ const PropertyDetails = () => {
     ],
     [
       {
-        label: "Garage",
+        label: "Package",
         value: "2",
       },
       {
-        label: "Garage Size",
+        label: "Package Size",
         value: "200 SqFt",
       },
       {

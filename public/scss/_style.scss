@@ -1733,6 +1733,8 @@ li {
 .listing-style7 .list-thumb {
     overflow: hidden;
     position: relative;
+    width: 400px !important;
+    height: 180px !important;
 }
 .listing-style7 img {
     -webkit-transition: all 0.4s ease;

@@ -11,7 +11,7 @@ const PropertyHeader = ({ id, data }) => {
           <h2 className="sp-lg-title">{data?.bhk} {data?.property_type}</h2>
           <div className="pd-meta mb15 d-md-flex align-items-center">
             <p className="text fz15 mb-0 bdrr1 pr10 bdrrn-sm">
-            {data?.address_details?.project}, {data?.address_details?.area}
+            {data?.address_details?.project}, {data?.address_details?.locality}, {data?.address_details?.area} 
             </p>
             <a
               className="ff-heading text-thm fz15 bdrr1 pr10 ml0-sm ml10 bdrrn-sm"
@@ -26,10 +26,6 @@ const PropertyHeader = ({ id, data }) => {
             >
               <i className="far fa-clock pe-2" />
               {data?.age_of_property} years ago
-            </a>
-            <a className="ff-heading ml10 ml0-sm fz15" href="#">
-              <i className="flaticon-fullscreen pe-2 align-text-top" />
-              8721
             </a>
           </div>
           <div className="property-meta d-flex align-items-center">

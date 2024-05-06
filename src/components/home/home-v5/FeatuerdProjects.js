@@ -6,7 +6,7 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const FeaturedListings = ({properties}) => {
+const FeatuerdProjects = ({properties}) => {
   return (
     <>
       <Swiper
@@ -45,19 +45,17 @@ const FeaturedListings = ({properties}) => {
                     width={400}
                     height={185}
                     className="w-100 h-100 cover"
-                    src={listing?.files[0]?.path || "/images/listings/g4-10.jpg"}
+                    src="/images/cf611f4cdd313f2.jpeg"
                     alt="listings"
                     style={{width:'400px !important', height:'185px !important'}}
                   />
-                  <div className="sale-sticker-wrap">
-                    
-                      <div className="list-tag rounded-0 fz12">
-                        <span className="flaticon-electricity" />
-                        FEATURED
-                      </div>
-                    
-                    <div className="list-tag2 rounded-0 fz12">FOR {listing?.service}</div>
-                  </div>
+
+{/* <Image
+                  width={90}
+                  height={75}
+                  src="/images/propCliq.jpg"
+                  alt="Header Logo"
+                /> */}
 
                   <div className="list-meta">
                     <a href="#" className="mr5">
@@ -73,12 +71,12 @@ const FeaturedListings = ({properties}) => {
                 </div>
                 <div className="list-content">
                   <h6 className="list-title">
-                    <Link href={`/property/${listing?._id}`}>{listing?.address_details?.project}</Link>
+                    <Link href={`/project/${listing?._id}`}>{listing?.name}</Link>
                   </h6>
 
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="list-price">
-                      {listing.monthly_rent} / <span>mo</span>
+                      {listing.show_price_on_website}
                     </div>
                     <div className="list-meta2 d-flex align-items-center">
                       <a href="#" className="mr10">
@@ -124,4 +122,4 @@ const FeaturedListings = ({properties}) => {
   );
 };
 
-export default FeaturedListings;
+export default FeatuerdProjects;

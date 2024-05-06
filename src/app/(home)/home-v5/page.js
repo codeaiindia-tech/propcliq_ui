@@ -1,12 +1,13 @@
 "use client"; 
   
 // Import useState from 'react' library 
-import { useState } from "react"; 
+import { useState, useEffect } from "react"; 
 
 import Explore from "@/components/common/Explore";
 import Footer from "@/components/home/home-v5/footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import FeaturedListings from "@/components/home/home-v5/FeatuerdListings";
+import FeatuerdProjects from "@/components/home/home-v5/FeatuerdProjects";
 import Header from "@/components/home/home-v5/Header";
 import Partner from "@/components/common/Partner";
 import PropertiesByCities from "@/components/home/home-v5/PropertiesByCities";
@@ -56,6 +57,41 @@ const Home_V5 = () => {
   const handleChildClick = (newMessage) => {
     setMessage(newMessage);
   };
+  const [data, setData] = useState(null);
+  const [projects, setProject] = useState(null);
+  useEffect(() => {
+    console.log("paraamst :::::: HOME ::::::::")
+    const fetchData = async () => {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      };
+      const response = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {cache: 'no-store'});
+      const data = await response.json();
+      setData(data);
+    };
+
+    fetchData();
+  }, []);
+
+
+  useEffect(() => {
+    console.log("paraam  ::: ::: st :::::: Projects ::::::::")
+    const fetchProjects = async () => {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      };
+      const response = await fetch(`http://localhost:7001/projects`, requestOptions, {cache: 'no-store'});
+      const data = await response.json();
+      setProject(data);
+    };
+
+    fetchProjects();
+  }, []);
+  
 
 
   return (
@@ -65,6 +101,8 @@ const Home_V5 = () => {
       <Header onChildClick={handleChildClick}  />
       {/* <>{JSON.stringify(sendDataToParent)}</> */}
       {/* End Main Header Nav */}
+
+
 
       {/* Mobile Nav  */}
       <MobileMenu />
@@ -98,10 +136,30 @@ const Home_V5 = () => {
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Discover Our Featured Listings</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
+                <h2 className="title">Featured Projects</h2>
+              </div>
+            </div>
+          </div>
+          {/* End header */}
+          
+          <div className="row">
+            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+              <div className="feature-listing-slider">
+                {projects ? <FeatuerdProjects properties={projects.data} /> : null }
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* End Discover Our Featured Listings */}
+
+      {/* Discover Our Featured Listings */}
+      <section className="pt-0 pb110 bgc-f7 pb50-md">
+        <div className="container">
+          <div className="row align-items-center" data-aos="fade-up">
+            <div className="col-lg-9">
+              <div className="main-title2">
+                <h2 className="title">Featured Properties</h2>
               </div>
             </div>
             <div className="col-lg-3">
@@ -118,7 +176,7 @@ const Home_V5 = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                <FeaturedListings properties={[]} />
+                {data ? <FeaturedListings properties={data.data} /> : null }
               </div>
             </div>
           </div>

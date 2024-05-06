@@ -30,9 +30,7 @@ const PropertyGallery = ({ id, data }) => {
     }
   });
 
-  console.log("firstImage[0].src", firstImage[0].path)
-
-  const images = data.files.map((item) => {
+  const images = data?.files.map((item) => {
     // if(item.default){
     return {
       src: item.path,
@@ -65,14 +63,14 @@ const PropertyGallery = ({ id, data }) => {
           <div className="sp-img-content mb15-md">
             <div className="popup-img preview-img-1 sp-img">
               <Item
-                original={firstImage[0].path}
-                thumbnail={firstImage[0].path}
+                original={firstImage[0]?.path}
+                thumbnail={firstImage[0]?.path}
                 width={610}
                 height={510}
               >
                 {({ ref, open }) => (
                   <Image
-                    src={firstImage[0].path}
+                    src={firstImage[0]?.path}
                     width={591}
                     height={558}
                     ref={ref}
