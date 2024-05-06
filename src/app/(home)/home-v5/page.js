@@ -84,7 +84,7 @@ const Home_V5 = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({})
       };
-      const response = await fetch(`http://localhost:7001/projects`, requestOptions, {cache: 'no-store'});
+      const response = await fetch(`${process.env.baseUrl}/projects`, requestOptions, {cache: 'no-store'});
       const data = await response.json();
       setProject(data);
     };
@@ -141,7 +141,7 @@ const Home_V5 = () => {
             </div>
           </div>
           {/* End header */}
-          
+
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
