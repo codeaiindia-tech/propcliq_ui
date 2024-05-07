@@ -23,7 +23,7 @@ import PropertyListing from "@/components/home/home-v5/PropertyListing";
 // export const metadata = {
 //   title: "Home v5 || Homez - Real Estate NextJS Template",
 // };
-export const revalidate = 0;
+// export const revalidate = 0;
 
 async function getData() {
   const requestOptions = {
