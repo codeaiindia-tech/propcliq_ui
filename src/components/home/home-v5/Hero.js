@@ -12,25 +12,25 @@ const Hero = () => {
   const sliderItems = [
     {
       image: "/images/home/home-5-1.jpg",
-      price: "$986,00",
+      price: "INR 2.5 Cr",
       title: "Studio on Grand Avenue",
       description: "32 Beds - 91 Baths - 1500 sq ft",
     },
     {
       image: "/images/home/home-5-2.jpg",
-      price: "$986,00",
+      price: "INR 2.9 Cr",
       title: "Studio on Grand Avenue",
       description: "32 Beds - 91 Baths - 1500 sq ft",
     },
     {
       image: "/images/home/home-5-3.jpg",
-      price: "$986,00",
+      price: "INR 3.5 Cr",
       title: "Studio on Grand Avenue",
       description: "32 Beds - 91 Baths - 1500 sq ft",
     },
     {
       image: "/images/home/home-5-4.jpg",
-      price: "$986,00",
+      price: "INR 3.2 Cr",
       title: "Studio on Grand Avenue",
       description: "32 Beds - 91 Baths - 1500 sq ft",
     },
@@ -50,7 +50,7 @@ const Hero = () => {
             swiper:
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
-          style={{ height: "850px" }}
+          style={{ height: "550px" }}
         >
           {sliderItems.map((item, index) => (
             <SwiperSlide key={index}>

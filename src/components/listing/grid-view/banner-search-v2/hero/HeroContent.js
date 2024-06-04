@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const HeroContent = ({filterFunctions} ) => {
+const HeroContent = ({ filterFunctions }) => {
   const [activeTab, setActiveTab] = useState("buy");
 
   const handleTabClick = (tab) => {
@@ -23,7 +23,7 @@ const HeroContent = ({filterFunctions} ) => {
               className={`nav-link ${activeTab === tab.id ? "active" : ""}`}
               onClick={() => handleTabClick(tab.id)}
             >
-              {tab.label}
+              {tab.label} 12121212
             </button>
           </li>
         ))}
@@ -47,7 +47,10 @@ const HeroContent = ({filterFunctions} ) => {
                           type="text"
                           name="search"
                           placeholder={`Search Products for ${tab.label}`}
-                          onChange={(e)=>filterFunctions && filterFunctions.setSearchQuery(e.target.value)}
+                          onChange={(e) =>
+                            filterFunctions &&
+                            filterFunctions.setSearchQuery(e.target.value)
+                          }
                         />
                       </div>
                     </form>

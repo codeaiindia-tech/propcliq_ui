@@ -5,6 +5,7 @@ import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import LookingFor from "./LookingFor";
 import Location from "./Location";
+import Select from "react-select";
 
 const initialValues = {
   search: "",
@@ -14,7 +15,7 @@ const initialValues = {
   priceMax: "",
 };
 
-const FilterContent = () => {
+const FilterContentHeader = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("rent");
   const [values, setValues] = useState(initialValues);
@@ -109,20 +110,45 @@ const FilterContent = () => {
     });
   };
 
+  const inqueryType = [
+    { value: "Rent", label: "Rent" },
+    { value: "Sell", label: "Sell" },
+    { value: "Buy", label: "Buy" },
+  ];
+
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      background: "none",
+    }),
+    option: (styles, { isFocused, isSelected, isHovered }) => {
+      return {
+        ...styles,
+        backgroundColor: isSelected
+          ? "#eb6753"
+          : isHovered
+          ? "#eb675312"
+          : isFocused
+          ? "#eb675312"
+          : undefined,
+      };
+    },
+  };
+
   return (
-    <div className="advance-style4 at-home5 mt-100 mt50-lg mb10 mx-auto animate-up-2">
-      <ul className="nav nav-tabs p-0 m-0">
+    <div className="advance-style4-top at-home5 mt-100 mt50-lg mb10 mx-auto animate-up-2">
+      {/* <ul className="nav nav-tabs p-0 m-0">
         {tabs.map((tab) => (
           <li className="nav-item" key={tab.id}>
             <button
               className={`nav-link ${activeTab === tab.id ? "active" : ""}`}
               onClick={() => handleTabClick(tab.id)}
             >
-              {tab.label}
+              {tab.label} 222222222
             </button>
           </li>
         ))}
-      </ul>
+      </ul> */}
 
       <div className="tab-content text-start">
         {tabs.map((tab) => (
@@ -132,6 +158,25 @@ const FilterContent = () => {
           >
             <div className="advance-content-style3 at-home5">
               <div className="row align-items-center">
+                <div className="col-md-4 col-xl-2 bdrr1 bdrrn-sm px20 pl15-sm">
+                  <div className="mt-3 mt-md-0 px-0">
+                    <div className="bootselect-multiselect">
+                      <label className="fz14">Rent/Sell/Buy</label>
+                      <Select
+                        defaultValue={"Rent"}
+                        name="looking"
+                        options={inqueryType}
+                        styles={customStyles}
+                        className="text-start select-borderless"
+                        classNamePrefix="select"
+                        required
+                        isClearable={false}
+                        onChange={() => {}}
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="col-md-4 col-xl-3 bdrr1 bdrrn-sm">
                   <label>Search</label>
                   <div className="advance-search-field position-relative">
@@ -171,7 +216,7 @@ const FilterContent = () => {
                 </div>
                 {/* End col-md-4 */}
 
-                <div className="col-md-4 col-xl-2 bdrr1 bdrrn-sm px20 pl15-sm">
+                {/* <div className="col-md-4 col-xl-2 bdrr1 bdrrn-sm px20 pl15-sm">
                   <div className="mt-3 mt-md-0">
                     <div className="dropdown-lists">
                       <label className="fz14 mb-1">Price</label>
@@ -197,7 +242,6 @@ const FilterContent = () => {
                             />
                             <div className="d-flex align-items-center">
                               <span id="slider-range-value1">
-                                {/* <input type="text" value={price.value.max} onChange={handleOnChange} /> */}
                                 {price.value.min}
                               </span>
                               <i className="fa-sharp fa-solid fa-minus mx-2 dark-color icon" />
@@ -210,7 +254,7 @@ const FilterContent = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End col-md-4 */}
 
                 <div className="col-md-6 col-lg-4 col-xl-3">
@@ -241,4 +285,4 @@ const FilterContent = () => {
   );
 };
 
-export default FilterContent;
+export default FilterContentHeader;

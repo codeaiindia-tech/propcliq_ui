@@ -8,7 +8,7 @@ import Link from "next/link";
 const listingsData = [
   {
     imageUrl: "/images/listings/slider-home7-1.jpg",
-    price: "$986,00",
+    price: "INR 1.9 Cr",
     title: "Studio on Grand Avenue",
     beds: "32 Beds",
     baths: "91 Baths",
@@ -16,7 +16,7 @@ const listingsData = [
   },
   {
     imageUrl: "/images/listings/slider-home7-2.jpg",
-    price: "$14,000",
+    price: "INR 2.3 Cr",
     title: "New apartment nice view",
     beds: "32 Beds",
     baths: "91 Baths",
@@ -24,7 +24,7 @@ const listingsData = [
   },
   {
     imageUrl: "/images/listings/slider-home7-3.jpg",
-    price: "$14,000",
+    price: "INR 2.9 Cr",
     title: "New apartment nice view",
     beds: "32 Beds",
     baths: "91 Baths",

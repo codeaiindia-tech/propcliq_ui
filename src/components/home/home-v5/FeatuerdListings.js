@@ -6,7 +6,7 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const FeaturedListings = ({properties}) => {
+const FeaturedListings = ({ properties }) => {
   return (
     <>
       <Swiper
@@ -36,7 +36,7 @@ const FeaturedListings = ({properties}) => {
           },
         }}
       >
-        {properties.slice(0, 4).map((listing) => (
+        {properties.slice(0, 10).map((listing) => (
           <SwiperSlide key={listing._id}>
             <div className="item">
               <div className="listing-style7 mb60">
@@ -45,18 +45,24 @@ const FeaturedListings = ({properties}) => {
                     width={400}
                     height={185}
                     className="w-100 h-100 cover"
-                    src={listing?.files[0]?.path || "/images/listings/g4-10.jpg"}
+                    src={
+                      listing?.files[0]?.path || "/images/listings/g4-10.jpg"
+                    }
                     alt="listings"
-                    style={{width:'400px !important', height:'185px !important'}}
+                    style={{
+                      width: "400px !important",
+                      height: "185px !important",
+                    }}
                   />
                   <div className="sale-sticker-wrap">
-                    
-                      <div className="list-tag rounded-0 fz12">
-                        <span className="flaticon-electricity" />
-                        FEATURED
-                      </div>
-                    
-                    <div className="list-tag2 rounded-0 fz12">FOR {listing?.service}</div>
+                    <div className="list-tag rounded-0 fz12">
+                      <span className="flaticon-electricity" />
+                      FEATURED
+                    </div>
+
+                    <div className="list-tag2 rounded-0 fz12">
+                      FOR {listing?.service}
+                    </div>
                   </div>
 
                   <div className="list-meta">
@@ -73,13 +79,34 @@ const FeaturedListings = ({properties}) => {
                 </div>
                 <div className="list-content">
                   <h6 className="list-title">
-                    <Link href={`/property/${listing?._id}`}>{listing?.address_details?.project}</Link>
+                    <Link href={`/property/${listing?._id}`}>
+                      {listing?.address_details?.project}
+                    </Link>
                   </h6>
 
                   <div className="d-flex justify-content-between align-items-center">
-                    <div className="list-price">
-                      {listing.monthly_rent} / <span>mo</span>
-                    </div>
+                    {listing.service !== "Sell" ? (
+                      <div className="list-price">
+                        {listing.monthly_rent} / <span>mo</span>
+                      </div>
+                    ) : (
+                      <>
+                        <p>
+                          <Link href={`/property/${listing?._id}`}>
+                            {listing?.name}
+                            <h6 className="list-title">
+                              {listing.bhk} {listing?.address_details?.area}{" "}
+                              {listing?.address_details?.locality}
+                            </h6>
+                          </Link>
+                          <p>
+                            <h6 className="list-title">
+                              INR {listing?.monthly_rent}
+                            </h6>
+                          </p>
+                        </p>
+                      </>
+                    )}
                     <div className="list-meta2 d-flex align-items-center">
                       <a href="#" className="mr10">
                         <span className="flaticon-bed mr5" /> {listing.bed}

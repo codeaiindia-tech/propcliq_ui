@@ -11,10 +11,10 @@ import React, { useCallback, useEffect, useState } from "react";
 // /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v5/filter-with-property/FilterContent.js
 import HeroContent from "../home-v2/hero/HeroContent";
 import FilterContent from "./filter-with-property/FilterContent";
+import FilterContentHeader from "./filter-with-property/FilterContentHeader";
 
-const Header = ({onChildClick}) => {
-
-  console.log("props:::::", onChildClick)
+const Header = ({ onChildClick }) => {
+  console.log("props:::::", onChildClick);
 
   const [navbar, setNavbar] = useState(false);
   const [menubar, setMenubar] = useState(false);
@@ -26,13 +26,13 @@ const Header = ({onChildClick}) => {
 
       if (window.scrollY >= 500) {
         onChildClick(true);
-        setMenubar(true)
+        setMenubar(true);
       }
     } else {
       setNavbar(false);
       // props.sendDataToParent(navbar);
       onChildClick(false);
-      setMenubar(false)
+      setMenubar(false);
     }
   });
 
@@ -50,84 +50,102 @@ const Header = ({onChildClick}) => {
           navbar ? "slideInDown animated" : ""
         }`}
       >
-        
-        {!menubar ? <nav className="posr">
-          <div className="container posr menu_bdrt1">
-            <div className="row align-items-center justify-content-between">
-              <div className="col-auto">
-                <div className="d-flex align-items-center justify-content-between">
-                  <div className="logos mr40">
-                    <Link className="header-logo logo1" href="/" style={{'position':'relative', 'left':'-300px'}}>
-                      <Image
-                        width={90}
-                        height={75}
-                        src="/images/propCliq.jpg"
-                        alt="Header Logo"
-                      />
-                    </Link>
-                    <Link className="header-logo logo2" href="/">
-                      <Image
-                        width={90}
-                        height={75}
-                        src="/images/prop-cliq.png"
-                        alt="Header Logo"
-                      />
-                    </Link>
-                  </div>
+        {!menubar ? (
+          <nav className="posr">
+            <div className="container posr menu_bdrt1">
+              <div className="row align-items-center justify-content-between">
+                <div className="col-auto">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="logos mr40">
+                      <Link
+                        className="header-logo logo1"
+                        href="/"
+                        style={{ position: "relative", right: "100%" }}
+                      >
+                        <Image
+                          width={90}
+                          height={75}
+                          src="/images/propCliq.jpg"
+                          alt="Header Logo"
+                        />
+                      </Link>
+                      <Link className="header-logo logo2" href="/">
+                        <Image
+                          width={90}
+                          height={75}
+                          src="/images/prop-cliq.png"
+                          alt="Header Logo"
+                        />
+                      </Link>
+                    </div>
 
-                  <MainMenu />
+                    <MainMenu />
+                  </div>
+                </div>
+
+                <div className="col-auto">
+                  <div className="d-flex align-items-center">
+                    <a
+                      href="https://frontend.propcliq.com"
+                      className="login-info d-flex align-items-center"
+                      role="button"
+                    >
+                      <i className="far fa-user-circle fz16 me-2" />{" "}
+                      <span className="d-none d-xl-block">
+                        Login / Register
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
-
-              <div className="col-auto">
-                <div className="d-flex align-items-center">
-                  <a
-                    href="https://frontend.propcliq.com"
-                    className="login-info d-flex align-items-center"
-                    role="button"
+            </div>
+          </nav>
+        ) : (
+          <nav className="posr">
+            <div className="container">
+              <div className="container posr menu_bdrt1">
+                <div className="row align-items-center justify-content-between">
+                  <div className="col-auto">
+                    <div className="d-flex align-items-center justify-content-between">
+                      <div className="logos mr40">
+                        <Link
+                          className="header-logo logo1"
+                          style={{ position: "absolute", right: "100%" }}
+                          href="/"
+                        >
+                          <Image
+                            width={90}
+                            height={75}
+                            src="/images/propCliq.jpg"
+                            alt="Header Logo"
+                          />
+                        </Link>
+                        <Link className="header-logo logo2" href="/">
+                          <Image
+                            width={90}
+                            height={75}
+                            src="/images/prop-cliq.png"
+                            alt="Header Logo"
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div
+                    className="inner-banner-style1 text-center"
+                    style={{ marginTop: "9%" }}
                   >
-                    <i className="far fa-user-circle fz16 me-2" />{" "}
-                    <span className="d-none d-xl-block">Login / Register</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav> : <nav className="posr">
-          <div className="container">
-          <div className="container posr menu_bdrt1">
-            <div className="row align-items-center justify-content-between">
-              <div className="col-auto">
-                <div className="d-flex align-items-center justify-content-between">
-                  <div className="logos mr40">
-                    <Link className="header-logo logo1" style={{'position':'absolute', 'left':'-300px'}} href="/">
-                      <Image
-                        width={90}
-                        height={75}
-                        src="/images/propCliq.jpg"
-                        alt="Header Logo"
-                      />
-                    </Link>
-                    <Link className="header-logo logo2" href="/">
-                      <Image
-                        width={90}
-                        height={75}
-                        src="/images/prop-cliq.png"
-                        alt="Header Logo"
-                      />
-                    </Link>
+                    <FilterContentHeader />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="inner-banner-style1 text-center" style={{"marginTop": "80px"}}><FilterContent /></div>
-              </div>
-            </div>
-          </div>
-        </nav> }
+          </nav>
+        )}
       </header>
       {/* End Header */}
 

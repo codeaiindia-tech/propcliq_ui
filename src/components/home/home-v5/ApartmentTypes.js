@@ -6,9 +6,9 @@ const ApartmentTypes = () => {
   const apartmentData = [
     {
       city: "Independent Farmhouses and Villas",
-      imageSrc: "/images/listings/city-listing-5.png",
+      imageSrc: "/images/listings/city-listing-8.png",
       propertyCount: 16,
-      className: "col-lg-6",
+      className: "col-6 col-lg-3",
     },
     {
       city: "Builder Flats",
@@ -22,24 +22,24 @@ const ApartmentTypes = () => {
       propertyCount: 24,
       className: "col-6 col-lg-3",
     },
-    {
-      city: "Indpendent houses",
-      imageSrc: "/images/listings/city-listing-8.png",
-      propertyCount: 12,
-      className: "col-6 col-lg-3",
-    },
+    // {
+    //   city: "Indpendent houses",
+    //   imageSrc: "/images/listings/city-listing-8.png",
+    //   propertyCount: 12,
+    //   className: "col-6 col-lg-3",
+    // },
     {
       city: "Studio-Apartments",
       imageSrc: "/images/listings/city-listing-9.png",
       propertyCount: 19,
       className: "col-6 col-lg-3",
     },
-    {
-      city: "Co-living",
-      imageSrc: "/images/listings/city-listing-10.png",
-      propertyCount: 3,
-      className: "col-lg-6",
-    },
+    // {
+    //   city: "Co-living",
+    //   imageSrc: "/images/listings/city-listing-10.png",
+    //   propertyCount: 3,
+    //   className: "col-lg-6",
+    // },
   ];
 
   return (

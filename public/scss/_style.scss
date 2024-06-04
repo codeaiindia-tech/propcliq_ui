@@ -72,8 +72,9 @@ Tag: advanced search, agency, agent, classified, directory, house, listing, prop
     --container-width: 1290px;
     --divder-space: 200px;
     --headings-color: #181a20;
-    --primary-theme_color: #eb6753;
-    --primary-theme_hover-color: #eb6753;
+    --primary-theme_color: #b68f31;
+    --primary-theme_hover-color: #b68f31;
+    --menu-nav-color: #b68f31;
 }
 
 /* Mixins */
@@ -3665,7 +3666,7 @@ li {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 900px;
+    height: 600px;
     position: relative;
 }
 .slider-slide-item:before {
@@ -4474,7 +4475,10 @@ section {
 .main-title,
 .main-title2 {
     position: relative;
-    margin-bottom: 60px;
+    
+}
+.boosted{
+    padding-top: 5%;
 }
 @media (max-width: 991.98px) {
     .main-title,
@@ -6630,6 +6634,15 @@ textarea:focus {
 }
 
 /* All kind Of btns Styles */
+.add-prop-menu {
+    background-color: #ffffff !important;
+    --primary-theme_hover-color: hsl(0, 0%, 80%);
+    color: #eb6753 !important; 
+    padding:  10px 5px 10px !important;
+    vertical-align: middle;
+}
+
+
 .ud-btn {
     border-radius: 12px;
     display: inline-block;
@@ -7231,9 +7244,9 @@ header.menu-home10.sticky .ace-responsive-menu .visible_list a.list-item:before 
     background-color: #181a20;
 }
 header.nav-homepage-style {
-    background: #8881818c;
+    background: var(--menu-nav-color);/*#8881818c;*/
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    padding: 20px 0;
+    /*padding: 20px 0;*/
     position: fixed;
     width: 100%;
     z-index: 3;
@@ -8019,6 +8032,12 @@ li.mm-listitem:focus {
     background-color: #ffffff;
     border-radius: 0 12px 12px 12px;
     padding: 20px 10px 20px 20px;
+    position: relative;
+}
+.advance-style4-top .tab-content {
+    background-color: #ffffff;
+    border-radius: 0 12px 12px 12px;
+    padding: 5px 20px 5px 20px;
     position: relative;
 }
 .advance-style4 .tab-content label {
@@ -10077,7 +10096,7 @@ input:focus-visible {
 }
 
 .bgc-thm {
-    background-color: var(--primary-theme_color);
+    background-color: #c0c3c7;
 }
 
 .bgc-thm2 {
@@ -10515,7 +10534,7 @@ input:focus-visible {
     top: 0;
     background: #f7f7f7;
     z-index: 999999;
-    width: 65%;
+    width: 81%;
 };
 
 @media (max-width: 767.98px) {

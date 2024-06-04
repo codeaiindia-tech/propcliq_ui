@@ -4,18 +4,18 @@ const ContactMeta = () => {
   const contactInfoData = [
     {
       text: "Address",
-      info: "329 Queensberry Street, North Melbourne VIC 3051, Australia.",
+      info: "G-75, Jaitpur, Badarpur, New Delhi",
       link: "#", // Empty link value for the first object
     },
     {
       text: "Total Free Customer Care",
-      info: "+(0) 123 050 945 02",
+      info: "+(91) 9650791087",
       link: "tel:+012305094502",
     },
     {
       text: "Need Live Support?",
-      info: "hi@homez.com",
-      link: "mailto:hi@homez.com",
+      info: "info@propcliq.com",
+      link: "mailto:info@propcliq.com",
     },
   ];
 

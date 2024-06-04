@@ -6,7 +6,7 @@ import LoginSignupModal from "@/components/common/login-signup-modal";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import FilterContent from "../home/home-v5/filter-with-property/FilterContent";
+import FilterContentHeader from "../home/home-v5/filter-with-property/FilterContentHeader";
 
 const DefaultHeader = () => {
   const [navbar, setNavbar] = useState(false);
@@ -33,13 +33,9 @@ const DefaultHeader = () => {
           navbar ? "sticky" : ""
         }`}
       >
-        <nav className="posr">
+        {/* <nav className="posr">
           <div className="container">
-            <Link
-              className="header-logo logo1"
-              style={{ position: "absolute", left: "42px" }}
-              href="/"
-            >
+            <Link className="header-logo logo1" href="/">
               <Image
                 width={90}
                 height={75}
@@ -47,8 +43,11 @@ const DefaultHeader = () => {
                 alt="Header Logo"
               />
             </Link>
-            <Link className="header-logo logo2" 
-            style={{ position: "absolute", left: "42px" }} href="/">
+            <Link
+              className="header-logo logo2"
+              style={{ position: "absolute", left: "42px" }}
+              href="/"
+            >
               <Image
                 width={90}
                 height={75}
@@ -60,9 +59,54 @@ const DefaultHeader = () => {
               <div className="col-lg-12">
                 <div
                   className="inner-banner-style1 text-center"
-                  style={{ marginTop: "80px" }}
+                  style={{ marginTop: "100px" }}
                 >
-                  <FilterContent />
+                  <FilterContentHeader />
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav> */}
+
+        <nav className="posr">
+          <div className="container">
+            <div className="container posr menu_bdrt1">
+              <div className="row align-items-center justify-content-between">
+                <div className="col-auto">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="logos mr40">
+                      <Link
+                        className="header-logo logo1"
+                        style={{ position: "absolute", right: "100%" }}
+                        href="/"
+                      >
+                        <Image
+                          width={90}
+                          height={75}
+                          src="/images/propCliq.jpg"
+                          alt="Header Logo"
+                        />
+                      </Link>
+                      <Link className="header-logo logo2" href="/">
+                        <Image
+                          width={90}
+                          height={75}
+                          src="/images/prop-cliq.png"
+                          alt="Header Logo"
+                        />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-12">
+                <div
+                  className="inner-banner-style1 text-center"
+                  style={{ marginTop: "9%" }}
+                >
+                  <FilterContentHeader />
                 </div>
               </div>
             </div>

@@ -10,9 +10,9 @@ const Social = () => {
 
   return (
     <div className="social-style1 d-flex align-items-center justify-content-end">
-      <h6 className="text-white mb-0">Foolow Us</h6>
+      <h6 className="text-white mb-0">Follow Us</h6>
       {socialIcons.map((iconClass, index) => (
-        <a key={index} href="#">
+        <a key={index} href="https://www.facebook.com/propcliq/">
           <i className={iconClass + " list-inline-item"} />
         </a>
       ))}

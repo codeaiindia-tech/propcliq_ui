@@ -11,16 +11,8 @@ const Footer = () => {
       <div className="row">
         <div className="col-sm-6">
           <div className="text-center text-lg-start">
-            <p className="copyright-text ff-heading mb-0">
-              © Homez {getCurrentYear()}{" "}
-              <a
-                href="https://themeforest.net/user/ib-themes"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ib-themes
-              </a>{" "}
-              - All rights reserved
+            <p className="copyright-text text-gray ff-heading">
+              PropCliq - All rights reserved
             </p>
           </div>
         </div>

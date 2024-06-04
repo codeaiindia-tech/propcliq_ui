@@ -50,7 +50,7 @@ const Footer = () => {
               <div className="footer-widget mb-4 mb-lg-5">
                 <div className="mailchimp-widget mb-4 mb-lg-5">
                   <h6 className="title text-white mb20">
-                    Keep Yourself Up to Date
+                    Keep Yourself Up to Date2
                   </h6>
                   <Subscribe />
                 </div>

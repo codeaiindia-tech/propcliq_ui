@@ -49,7 +49,7 @@ const Footer = () => {
               <ContactMeta />
               <div className="footer-widget light-style mb30">
                 <div className="mailchimp-widget ">
-                  <h6 className="title mb20">Keep Yourself Up to Date</h6>
+                  <h6 className="title mb20">Keep Yourself Up to Date7</h6>
                   <Subscribe />
                 </div>
               </div>

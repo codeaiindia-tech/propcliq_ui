@@ -1,7 +1,7 @@
-"use client"; 
-  
-// Import useState from 'react' library 
-import { useState, useEffect } from "react"; 
+"use client";
+
+// Import useState from 'react' library
+import { useState, useEffect } from "react";
 
 import Explore from "@/components/common/Explore";
 import Footer from "@/components/home/home-v5/footer";
@@ -29,20 +29,22 @@ async function getData() {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({})
+    body: JSON.stringify({}),
   };
-  const res = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {cache: 'no-store'});
+  const res = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {
+    cache: "no-store",
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
- 
+
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+    throw new Error("Failed to fetch data");
   }
- 
+
   // console.log("res.json()", res.json())
 
-  return res.json()
+  return res.json();
 }
 
 const handleChildClick = (newMessage) => {
@@ -60,49 +62,55 @@ const Home_V5 = () => {
   const [data, setData] = useState(null);
   const [projects, setProject] = useState(null);
   useEffect(() => {
-    console.log("paraamst :::::: HOME ::::::::")
+    console.log("paraamst :::::: HOME ::::::::");
     const fetchData = async () => {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({})
+        body: JSON.stringify({}),
       };
-      const response = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {cache: 'no-store'});
+      const response = await fetch(
+        `${process.env.baseUrl}/properties`,
+        requestOptions,
+        { cache: "no-store" }
+      );
       const data = await response.json();
+
+      console.log("data::::", data);
+
       setData(data);
     };
 
     fetchData();
   }, []);
 
-
   useEffect(() => {
-    console.log("paraam  ::: ::: st :::::: Projects ::::::::")
+    console.log("paraam  ::: ::: st :::::: Projects ::::::::");
     const fetchProjects = async () => {
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({})
+        body: JSON.stringify({}),
       };
-      const response = await fetch(`${process.env.baseUrl}/projects`, requestOptions, {cache: 'no-store'});
+      const response = await fetch(
+        `${process.env.baseUrl}/projects`,
+        requestOptions,
+        { cache: "no-store" }
+      );
       const data = await response.json();
       setProject(data);
     };
 
     fetchProjects();
   }, []);
-  
-
 
   return (
     <>
       {/* Main Header Nav */}
       {/* <p>Message from Child: {JSON.stringify(message)}</p> */}
-      <Header onChildClick={handleChildClick}  />
+      <Header onChildClick={handleChildClick} />
       {/* <>{JSON.stringify(sendDataToParent)}</> */}
       {/* End Main Header Nav */}
-
-
 
       {/* Mobile Nav  */}
       <MobileMenu />
@@ -121,7 +129,7 @@ const Home_V5 = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              {!message ? <FilterWithProperties /> : null }
+              {!message ? <FilterWithProperties /> : null}
             </div>
           </div>
           {/* End .row */}
@@ -131,12 +139,12 @@ const Home_V5 = () => {
       {/* End Filter with properties */}
 
       {/* Discover Our Featured Listings */}
-      <section className="pt-0 pb110 bgc-f7 pb50-md">
+      <section className="pt-0 pb0 bgc-f7 pb50-md">
         <div className="container">
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Featured Projects</h2>
+                <h2 className="title">Crown Projects</h2>
               </div>
             </div>
           </div>
@@ -145,7 +153,9 @@ const Home_V5 = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                {projects ? <FeatuerdProjects properties={projects.data} /> : null }
+                {projects ? (
+                  <FeatuerdProjects properties={projects.data} />
+                ) : null}
               </div>
             </div>
           </div>
@@ -153,13 +163,17 @@ const Home_V5 = () => {
       </section>
       {/* End Discover Our Featured Listings */}
 
-      {/* Discover Our Featured Listings */}
-      <section className="pt-0 pb110 bgc-f7 pb50-md">
+      {/* CTA */}
+      <Cta />
+      {/* CTA */}
+
+      {/* Discover Our Featured properties */}
+      <section className="pt-0 bgc-f7 pb50-md">
         <div className="container">
-          <div className="row align-items-center" data-aos="fade-up">
+          <div className="row align-items-center boosted" data-aos="fade-up">
             <div className="col-lg-9">
-              <div className="main-title2">
-                <h2 className="title">Featured Properties</h2>
+              <div className="main-title2 ">
+                <h2 className="title-boost">Boosted Properties in Demand</h2>
               </div>
             </div>
             <div className="col-lg-3">
@@ -176,13 +190,88 @@ const Home_V5 = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                {data ? <FeaturedListings properties={data.data} /> : null }
+                {data ? <FeaturedListings properties={data.data} /> : null}
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* End Discover Our Featured Listings */}
+      {/* End Discover Our Featured properties */}
+
+      {/* Discover Our Featured Dealers */}
+      <section className=" pt0 bgc-f7 pb50-md topDealers">
+        <div className="container">
+          <div className="row align-items-center" data-aos="fade-up">
+            <div className="col-lg-9">
+              <div className="main-title2">
+                <h2 className="title">Our Top Dealers</h2>
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <div className="text-start text-lg-end mb-3">
+                <Link className="ud-btn2" href="/grid-full-2-col">
+                  See All Dealers
+                  <i className="fal fa-arrow-right-long" />
+                </Link>
+              </div>
+            </div>
+          </div>
+          {/* End header */}
+
+          <div className="row">
+            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+              <div className="feature-listing-slider">
+                {data ? <FeaturedListings properties={data.data} /> : null}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* End Discover Our Featured Dealers */}
+
+      {/* Explore property-city */}
+      <section className="pb0-md pb0">
+        <div className="container">
+          <div
+            className="row align-items-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div className="col-lg-9">
+              <div className="main-title2">
+                <h2 className="title">Properties by Cities</h2>
+                <p className="paragraph">
+                  Following are the demanded cities for exploring your property
+                </p>
+              </div>
+            </div>
+            {/* End col-lg-9 */}
+
+            <div className="col-lg-3">
+              <div className="text-start text-lg-end mb-3">
+                <Link className="ud-btn2" href="">
+                  {" "}
+                  {/*/map-v4"> */}
+                  See All Cities
+                  <i className="fal fa-arrow-right-long" />
+                </Link>
+              </div>
+            </div>
+            {/* End col-lg-3 */}
+          </div>
+          {/* End .row */}
+
+          <div className="row">
+            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+              <div className="property-city-slider position-relative">
+                <PropertiesByCities />
+              </div>
+            </div>
+          </div>
+          {/* End .row */}
+        </div>
+      </section>
+      {/* End Explore property-city */}
 
       {/* Explore Apartment Types cities */}
       <section className="pb90 pb30-md">
@@ -191,9 +280,7 @@ const Home_V5 = () => {
             <div className="col-lg-6 mx-auto">
               <div className="main-title2 text-center">
                 <h2 className="title">Explore Your Type</h2>
-                <p className="paragraph">
-                  Explore from our 1000+ options
-                </p>
+                <p className="paragraph">Explore from our 1000+ options</p>
               </div>
             </div>
           </div>
@@ -217,9 +304,7 @@ const Home_V5 = () => {
             >
               <div className="main-title text-center">
                 <h2 className="title">Why PropCliQ?</h2>
-                <p className="paragraph">
-                  How we are making you job easy
-                </p>
+                <p className="paragraph">How we are making you job easy</p>
               </div>
             </div>
           </div>
@@ -232,54 +317,8 @@ const Home_V5 = () => {
       </section>
       {/* End Explore Apartment */}
 
-      {/* Explore property-city */}
-      <section className="pb40-md pb90">
-        <div className="container">
-          <div
-            className="row align-items-center"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div className="col-lg-9">
-              <div className="main-title2">
-                <h2 className="title">Properties by Cities</h2>
-                <p className="paragraph">
-                  Following are the demanded cities for exploring your property
-                </p>
-              </div>
-            </div>
-            {/* End col-lg-9 */}
-
-            <div className="col-lg-3">
-              <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="">   {/*/map-v4"> */}
-                  See All Cities
-                  <i className="fal fa-arrow-right-long" />
-                </Link>
-              </div>
-            </div>
-            {/* End col-lg-3 */}
-          </div>
-          {/* End .row */}
-
-          <div className="row">
-            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-              <div className="property-city-slider position-relative">
-                <PropertiesByCities />
-              </div>
-            </div>
-          </div>
-          {/* End .row */}
-        </div>
-      </section>
-      {/* End Explore property-city */}
-
-      {/* CTA */}
-      <Cta />
-      {/* CTA */}
-
       {/* Our Testimonials */}
-      <section className="pb50-md">
+      <section className="pb0-md">
         <div className="container maxw1600">
           <div className="row  justify-content-center text-center align-items-center">
             <div className="col-auto">
@@ -290,7 +329,7 @@ const Home_V5 = () => {
               >
                 <h2 className="title">People are loving our service</h2>
                 <p className="paragraph">
-                 Please experience yourself and share your thoughts
+                  Please experience yourself and share your thoughts
                 </p>
               </div>
             </div>
@@ -318,7 +357,7 @@ const Home_V5 = () => {
       {/* End  Popular Property */}
 
       {/* Explore Blog */}
-      <section className="pb90 pb30-md">
+      <section className="pb0 pb30-md">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 m-auto" data-aos="fade-up">

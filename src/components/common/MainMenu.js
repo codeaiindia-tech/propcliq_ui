@@ -103,8 +103,6 @@ const MainMenu = () => {
           ))}
         </ul> */}
       </li>
-      
-
       <li className="visible_list dropitem">
         <a className="list-item" href="#">
           <span
@@ -143,7 +141,6 @@ const MainMenu = () => {
           ))}
         </ul> */}
       </li>
-      
 
       <li className="visible_list dropitem">
         <a className="list-item" href="#">
@@ -162,27 +159,15 @@ const MainMenu = () => {
           ))}
         </ul> */}
       </li>
-      
 
-      <li className="visible_list dropitem">
-        <a className="list-item" href="#">
-          <span className={topMenu == "pages" ? "title menuActive" : "title"}>
-            Pages
-          </span>
-          {/* <span className="arrow"></span> */}
-        </a>
-        {/* <ul className="sub-menu">
-          {pageItems.map((item, index) => (
-            <li key={index}>
-              <Link className={`${handleActive(item.href)}`} href={item.href}>
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul> */}
+      <li
+        href="/dashboard-add-property"
+        className="ud-btn btn-thm me-0 me-sm-4 add-prop-menu"
+      >
+        Post new Property
+        <i className="fal fa-arrow-right-long" />
       </li>
-      
-      
+
       {/* End pages Items */}
     </ul>
   );

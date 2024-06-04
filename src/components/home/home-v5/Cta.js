@@ -8,21 +8,31 @@ const Cta = () => {
         <div className="row">
           <div className="col-xl-10 mx-auto" data-aos="fade-in">
             <div className="cta-style4 position-relative text-center">
-              <h6 className="sub-title fw400 text-white">BUY OR SELL</h6>
-              <h1 className="cta-title mb30 text-white">
-                Looking to Buy a new property or sell an existing one? Realton
-                provides an awesome solution!
-              </h1>
+              <h1 className="sub-title fw400 text-white">PROP HELP CRM!</h1>
+              <h6 className="cta-title mb30 text-white">
+                Looking for a new property leand managemnt CRM, for schedulings
+                and followups, calling, recordings and email we are here an
+                awesome solution!
+              </h6>
               <div className="d-block d-sm-flex justify-content-center">
-                <Link
-                  href="/dashboard-add-property"
-                  className="ud-btn btn-thm me-0 me-sm-4"
-                >
-                  Submit Property
+                <Link href="/" className="ud-btn btn-white">
+                  Manage Calls
                   <i className="fal fa-arrow-right-long" />
                 </Link>
-                <Link href="/grid-default" className="ud-btn btn-white">
-                  Browse Properties
+                <Link href="/" className="ud-btn btn-white">
+                  Manage Contacts
+                  <i className="fal fa-arrow-right-long" />
+                </Link>
+                <Link href="/" className="ud-btn btn-white">
+                  Manage Recording
+                  <i className="fal fa-arrow-right-long" />
+                </Link>
+                <Link href="/" className="ud-btn btn-white">
+                  Manage Users
+                  <i className="fal fa-arrow-right-long" />
+                </Link>
+                <Link href="/" className="ud-btn btn-white">
+                  Manage CRM
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>

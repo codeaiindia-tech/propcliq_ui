@@ -3,7 +3,7 @@
 import listings from "@/data/listings";
 import React from "react";
 
-const ProjectHeader = ({ id, projectData }) => {
+const ProjectHeader = ({ id, projectData, navbar }) => {
   const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
   return (
     <>
@@ -12,7 +12,7 @@ const ProjectHeader = ({ id, projectData }) => {
           <h2 className="sp-lg-title">{projectData.display_name}</h2>
           <div className="pd-meta mb15 d-md-flex align-items-center">
             <p className="text fz15 mb-0 bdrr1 pr10 bdrrn-sm">
-            {projectData?.state}, {projectData?.locality}
+              {projectData?.state}, {projectData?.locality}
             </p>
             <a
               className="ff-heading bdrr1 fz15 pr10 ml10 ml0-sm bdrrn-sm"
@@ -46,7 +46,7 @@ const ProjectHeader = ({ id, projectData }) => {
       </div>
       {/* End .col-lg--8 */}
 
-      <div className="col-lg-4">
+      <div className={!navbar ? "col-lg-4 col-md-4" : "col-lg-4 col-md-4"}>
         <div className="single-property-content">
           <div className="property-action text-lg-end">
             <div className="d-flex mb20 mb10-md align-items-center justify-content-lg-end">
@@ -64,9 +64,7 @@ const ProjectHeader = ({ id, projectData }) => {
               </a>
             </div>
             <h3 className="price mb-0">{projectData?.show_price_on_website}</h3>
-            <p className="text space fz15">
-              {projectData?.project_size}
-            </p>
+            <p className="text space fz15">{projectData?.project_size}</p>
           </div>
         </div>
       </div>

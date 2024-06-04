@@ -15,16 +15,8 @@ const Footer = () => {
         <div className="row items-center justify-content-center justify-content-md-between">
           <div className="col-auto">
             <div className="copyright-widget">
-              <p className="text">
-                © Homez {currentYear}{" "}
-                <a
-                  href="https://themeforest.net/user/ib-themes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  ib-themes
-                </a>{" "}
-                - All rights reserved
+              <p className="copyright-text text-gray ff-heading">
+                PropCliq - All rights reserved 11 1 1
               </p>
             </div>
           </div>

@@ -88,19 +88,11 @@ const ProjectV1 = ({ params }) => {
         <section className="pt60 pb90 bgc-f7">
           <div className="container">
             <div className={`row ${navbar ? "sticky-inside-header" : ""}`}>
-              <Link
-                className="header-logo logo1"
-                href="/"
-                style={{ position: "absolute", left: "-300px" }}
-              >
-                <Image
-                  width={90}
-                  height={75}
-                  src="/images/propCliq.jpg"
-                  alt="Header Logo"
-                />
-              </Link>
-              <ProjectHeader id={params.id} projectData={data.data} />
+              <ProjectHeader
+                id={params.id}
+                projectData={data.data}
+                navbar={navbar}
+              />
             </div>
             {/* End .row */}
 
@@ -110,7 +102,7 @@ const ProjectV1 = ({ params }) => {
             {/* End .row */}
 
             <div className="row wrap">
-              <div className="col-lg-8">
+              <div className="col-lg-8 col-md-8">
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Overview</h4>
                   <div className="row">
@@ -251,7 +243,7 @@ const ProjectV1 = ({ params }) => {
               </div>
               {/* End .col-8 */}
 
-              <div className="col-lg-4">
+              <div className="col-lg-4 col-md-4">
                 <div className="column">
                   <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
                     <h4 className="form-title mb5">Schedule a tour</h4>

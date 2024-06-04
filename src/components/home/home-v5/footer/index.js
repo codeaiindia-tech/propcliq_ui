@@ -19,15 +19,15 @@ const Footer = () => {
         {/* End .row */}
 
         <div className="row">
-          <div className="col-sm-6 col-lg-3">
+          <div className="col-sm">
             <div className="footer-widget mb-4 mb-lg-5">
               <Link className="footer-logo" href="/">
-              <Image
-                width={90}
-                height={75}
-                src="/images/propCliq.jpg"
-                alt="Header Logo"
-              />
+                <Image
+                  width={90}
+                  height={75}
+                  src="/images/propCliq.jpg"
+                  alt="Header Logo"
+                />
               </Link>
               <ContactMeta />
             </div>
@@ -37,8 +37,8 @@ const Footer = () => {
           <MenuWidget />
           {/* End MenuWidget */}
 
-          <div className="col-sm-6 col-lg-3">
-            <div className="footer-widget mb-4 mb-lg-5">
+          <div className="col-sm">
+            <div className="footer-widget mb-2 mb-lg-2">
               <AppWidget />
             </div>
           </div>
