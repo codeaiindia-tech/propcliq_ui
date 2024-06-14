@@ -9,12 +9,14 @@ import { useEffect, useState } from "react";
 const ProSidebarContent = () => {
   const path = usePathname();
 
-
-
   return (
     <Sidebar width="100%" backgroundColor="#fff" className="my-custom-class">
       <Menu>
-        {mobileMenuItems.map((item, index) => (
+        <MenuItem key={1}>Home</MenuItem>
+        <MenuItem key={1}>Listing</MenuItem>
+        <MenuItem key={1}>Property</MenuItem>
+        <MenuItem key={1}>Blog</MenuItem>
+        {/* {mobileMenuItems.map((item, index) => (
           <SubMenu
             key={index}
             className={isParentActive(item.subMenu, path) ? "active" : ""}
@@ -58,7 +60,7 @@ const ProSidebarContent = () => {
               )
             )}
           </SubMenu>
-        ))}
+        ))} */}
       </Menu>
     </Sidebar>
   );

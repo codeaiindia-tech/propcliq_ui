@@ -9,7 +9,7 @@ const ContactMeta = () => {
     },
     {
       title: "Need Live Support?",
-      mail: "hi@homez.com",
+      mail: "info@propcliq.com",
       mailLink: "mailto:ibthemes21@gmail.com",
     },
   ];

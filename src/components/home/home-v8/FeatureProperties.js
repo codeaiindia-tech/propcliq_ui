@@ -83,7 +83,9 @@ const FeatureProperties = () => {
                   <div className="list-tag2 fz12">{property.status}</div>
                 </div>
                 <h4 className="list-title">
-                  <Link  href={`/single-v4/${property.id}`}>{property.title}</Link>
+                  <Link href={`/single-v4/${property.id}`}>
+                    {property.title}
+                  </Link>
                 </h4>
                 <p className="list-text fz15">{property.location}</p>
                 <div className="list-meta d-block d-sm-flex align-items-center mt30 mb40">
@@ -127,7 +129,7 @@ const FeatureProperties = () => {
                         Need Live Support?
                       </p>
                       <h6 className="info-mail">
-                        <a href="mailto:hi@homez.com">hi@homez.com</a>
+                        <a href="mailto:info@propcliq.com">hi@homez.com</a>
                       </h6>
                     </div>
                   </div>

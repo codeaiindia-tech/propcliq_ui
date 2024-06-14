@@ -8,8 +8,8 @@ const ContactMeta = () => {
       link: "#", // Empty link value for the first object
     },
     {
-      text: "Total Free Customer Care",
-      info: "+(91) 9650791087",
+      text: "Customer Care",
+      info: "+(91) 9990905440",
       link: "tel:+012305094502",
     },
     {
@@ -21,6 +21,7 @@ const ContactMeta = () => {
 
   return (
     <div className="row mb-4 mb-lg-5">
+      111111
       {contactInfoData.map((contact, index) => (
         <div className="contact-info mb25" key={index}>
           <p className="info-title mb5">{contact.text}</p>

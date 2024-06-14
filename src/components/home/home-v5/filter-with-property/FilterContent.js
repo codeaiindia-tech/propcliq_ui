@@ -142,7 +142,7 @@ const FilterContent = () => {
                           type="text"
                           name="search"
                           id="search"
-                          placeholder={`Enter Keyword for ${tab.label}`}
+                          placeholder={`SEARCH`} //Enter Keyword for ${tab.label}`}
                           onChange={handleInputChange}
                         />
                       </div>
@@ -154,7 +154,7 @@ const FilterContent = () => {
                 <div className="col-md-4 col-xl-2 bdrr1 bdrrn-sm px20 pl15-sm">
                   <div className="mt-3 mt-md-0 px-0">
                     <div className="bootselect-multiselect">
-                      <label className="fz14">Loking For</label>
+                      <label className="fz14">Looking For</label>
                       <LookingFor onClick={lookingFor} />
                     </div>
                   </div>

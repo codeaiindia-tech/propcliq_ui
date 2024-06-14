@@ -139,12 +139,14 @@ const Home_V5 = () => {
       {/* End Filter with properties */}
 
       {/* Discover Our Featured Listings */}
-      <section className="pt-0 pb0 bgc-f7 pb50-md">
+      <section className="pt-0 pb0 bgc-f7 pb50-md" style={{ marginTop: "-4%" }}>
         <div className="container">
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Crown Projects</h2>
+                <h2 className="title" style={{ marginBottom: "30px" }}>
+                  Crown Projects
+                </h2>
               </div>
             </div>
           </div>
@@ -173,7 +175,9 @@ const Home_V5 = () => {
           <div className="row align-items-center boosted" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2 ">
-                <h2 className="title-boost">Boosted Properties in Demand</h2>
+                <h2 className="title-boost" style={{ marginBottom: "30px" }}>
+                  Boosted Properties in Demand
+                </h2>
               </div>
             </div>
             <div className="col-lg-3">
@@ -204,7 +208,9 @@ const Home_V5 = () => {
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Our Top Dealers</h2>
+                <h2 className="title" style={{ marginBottom: "30px" }}>
+                  Our Top Dealers
+                </h2>
               </div>
             </div>
             <div className="col-lg-3">

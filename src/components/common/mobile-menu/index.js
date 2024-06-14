@@ -20,9 +20,9 @@ const MobileMenu = () => {
                 aria-controls="mobileMenu"
               >
                 <Image
-                  width={25}
-                  height={9}
-                  src="/images/prop-cliq.png"
+                  width={50}
+                  height={50}
+                  src="/images/hamburger-menu.svg"
                   alt="mobile icon"
                 />
               </a>
@@ -59,7 +59,7 @@ const MobileMenu = () => {
             >
               <span className="far fa-times"></span>
             </div>
-            <h4 className="title">Welcome to Homez</h4>
+            <h4 className="title">Welcome to PropCliq</h4>
           </div>
           {/* End header */}
 

@@ -3,7 +3,10 @@ import Select from "react-select";
 
 const Location = (props) => {
   const inqueryType = [
-    { value: "Greater Noida", label: "Greater Noida" }
+    { value: "Greater Noida", label: "Greater Noida" },
+    { value: "Noida Extension", label: "Noida Extension" },
+    { value: "Delhi", label: "Delhi" },
+    { value: "Gurgaon", label: "Gurgaon" },
   ];
 
   const customStyles = {
@@ -11,9 +14,9 @@ const Location = (props) => {
       return {
         ...styles,
         backgroundColor: isSelected
-          ? "#eb6753"
+          ? "#b69031"
           : isHovered
-          ? "#eb675312"
+          ? "#b69031"
           : isFocused
           ? "#eb675312"
           : undefined,
@@ -23,7 +26,7 @@ const Location = (props) => {
 
   const onClick = (event) => {
     props.onClick(event.value);
-  }
+  };
 
   return (
     <>
@@ -36,7 +39,7 @@ const Location = (props) => {
         classNamePrefix="select"
         required
         isClearable={false}
-        onChange={(event) => onClick(event) }
+        onChange={(event) => onClick(event)}
       />
     </>
   );

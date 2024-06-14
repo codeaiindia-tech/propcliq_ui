@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="col-sm-6">
           <div className="text-center text-lg-start">
             <p className="copyright-text text-gray ff-heading">
-              PropCliq - All rights reserved
+              PropCliq - Powered by "The Datamind Technology"
             </p>
           </div>
         </div>

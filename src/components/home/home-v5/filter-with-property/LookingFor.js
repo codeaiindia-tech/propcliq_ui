@@ -22,7 +22,7 @@ const LookingFor = (props) => {
       return {
         ...styles,
         backgroundColor: isSelected
-          ? "#eb6753"
+          ? "#b69031"
           : isHovered
           ? "#eb675312"
           : isFocused
@@ -32,10 +32,9 @@ const LookingFor = (props) => {
     },
   };
 
-
   const onClick = (event) => {
     props.onClick(event.value);
-  }
+  };
 
   return (
     <>
@@ -48,7 +47,7 @@ const LookingFor = (props) => {
         classNamePrefix="select"
         required
         isClearable={false}
-        onChange={(event) => onClick(event) }
+        onChange={(event) => onClick(event)}
       />
     </>
   );

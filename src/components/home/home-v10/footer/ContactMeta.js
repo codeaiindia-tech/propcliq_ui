@@ -9,8 +9,8 @@ const ContactMeta = () => {
     },
     {
       title: "Need Live Support?",
-      mail: "hi@homez.com",
-      mailLink: "mailto:hi@homez.com", // Use "mailto" URI scheme for email
+      mail: "info@propcliq.com",
+      mailLink: "mailto:info@propcliq.com", // Use "mailto" URI scheme for email
     },
   ];
 

@@ -12,13 +12,6 @@ const Footer = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-xl-6 mx-auto">
-            <Subscribe />
-          </div>
-        </div>
-        {/* End .row */}
-
-        <div className="row">
           <div className="col-sm">
             <div className="footer-widget mb-4 mb-lg-5">
               <Link className="footer-logo" href="/">
@@ -32,17 +25,16 @@ const Footer = () => {
               <ContactMeta />
             </div>
           </div>
-          {/* End .col */}
 
-          <MenuWidget />
-          {/* End MenuWidget */}
+          <div className="col-xl-6 mx-auto">
+            <Subscribe />
+          </div>
 
           <div className="col-sm">
             <div className="footer-widget mb-2 mb-lg-2">
               <AppWidget />
             </div>
           </div>
-          {/* End .col */}
         </div>
         {/* End .row */}
       </div>
