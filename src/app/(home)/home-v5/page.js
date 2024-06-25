@@ -408,6 +408,129 @@ const Home_V5 = () => {
       </section>
       {/* End Our Partners */}
 
+      <section className="footer-style1 pt60 pb-0">
+        <div className="container">
+          <div className="row">
+            <h6 className="text-white mb25">Frequent Search</h6>
+
+            <div className="col-sm-3 col-lg-3">
+              <div className="footer-widget ">
+                <div className="link-style1 mb30">
+                  <div className="link-list">
+                    <a href="#"> Property in Noida</a>
+                    <a href="#"> Property in Noida Extension</a>
+                    <a href="#3"> Property in Greater Noida</a>
+                    <a href="#4"> Property in Ghaziabad</a>
+                    <a href="#5"> Property in Delhi</a>
+                    <a href="#7"> Property in Gurugram</a>
+                    <a href="#9"> Property in Chandigarh</a>
+                    <a href="#11"> Property in Meerut</a>
+                    <a href="#12"> Property in Dehradun</a>
+                  </div>
+                  <div className="link-list">
+                    <a href="#1"> Apartment in Noida</a>
+                    <a href="#2"> Apartment in Noida Extension</a>
+                    <a href="#3"> Apartment in Greater Noida</a>
+                    <a href="#4"> Apartment in Ghaziabad</a>
+                    <a href="#5"> Apartment in Delhi</a>
+                    <a href="#7"> Apartment in Gurugram</a>
+                    <a href="#9"> Apartment in Chandigarh</a>
+                    <a href="#11"> Apartment in Meerut</a>
+                    <a href="#12"> Apartment in Dehradun</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-sm-3 col-lg-3">
+              <div className="footer-widget ">
+                <div className="link-style1 mb30">
+                  <div className="link-list">
+                    <a href="#1"> Villa in Noida</a>
+                    <a href="#2"> Villa in Noida Extension</a>
+                    <a href="#3"> Villa in Greater Noida</a>
+                    <a href="#4"> Villa in Ghaziabad</a>
+                    <a href="#5"> Villa in Delhi</a>
+                    <a href="#7"> Villa in Gurugram</a>
+                    <a href="#9"> Villa in Chandigarh</a>
+                    <a href="#11"> Villa in Meerut</a>
+                    <a href="#12"> Villa in Dehradun</a>
+                  </div>
+                  <div className="link-list">
+                    <a href="#1"> Low Rise Apartment in Noida</a>
+                    <a href="#2"> Low Rise Apartment in Noida Extension</a>
+                    <a href="#3"> Low Rise Apartment in Greater Noida</a>
+                    <a href="#4"> Low Rise Apartment in Ghaziabad</a>
+                    <a href="#5"> Low Rise Apartment in Delhi</a>
+                    <a href="#7"> Low Rise Apartment in Gurugram</a>
+                    <a href="#9"> Low Rise Apartment in Chandigarh</a>
+                    <a href="#11"> Low Rise Apartment in Meerut</a>
+                    <a href="#12"> Low Rise Apartment in Dehradun</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-sm-3 col-lg-3">
+              <div className="footer-widget ">
+                <div className="link-style1 mb30">
+                  <div className="link-list">
+                    <a href="#1"> Plot in Noida</a>
+                    <a href="#2"> Plot in Noida Extension</a>
+                    <a href="#3"> Plot in Greater Noida</a>
+                    <a href="#4"> Plot in Ghaziabad</a>
+                    <a href="#5"> Plot in Delhi</a>
+                    <a href="#7"> Plot in Gurugram</a>
+                    <a href="#9"> Plot in Chandigarh</a>
+                    <a href="#11"> Plot in Meerut</a>
+                    <a href="#12"> Plot in Dehradun</a>
+                  </div>
+                  <div className="link-list">
+                    <a href="#1"> Residential Property in Noida</a>
+                    <a href="#2"> Residential Property in Noida Extension</a>
+                    <a href="#3"> Residential Property in Greater Noida</a>
+                    <a href="#4"> Residential Property in Ghaziabad</a>
+                    <a href="#5"> Residential Property in Delhi</a>
+                    <a href="#7"> Residential Property in Gurugram</a>
+                    <a href="#9"> Residential Property in Chandigarh</a>
+                    <a href="#11"> Residential Property in Meerut</a>
+                    <a href="#12"> Residential Property in Dehradun</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-3 col-lg-3">
+              <div className="footer-widget ">
+                <div className="link-style1 mb30">
+                  <div className="link-list">
+                    <a href="#1">Commercial Property in Noida</a>
+                    <a href="#2">Commercial Property in Noida Extension</a>
+                    <a href="#3">Commercial Property in Greater Noida</a>
+                    <a href="#4">Commercial Property in Ghaziabad</a>
+                    <a href="#5">Commercial Property in Delhi</a>
+                    <a href="#7">Commercial Property in Gurugram</a>
+                    <a href="#9">Commercial Property in Chandigarh</a>
+                    <a href="#11">Commercial Property in Meerut</a>
+                    <a href="#12">Commercial Property in Dehradun</a>
+                  </div>
+                  <div className="link-list">
+                    <a href="#1">Independent Floor in Noida</a>
+                    <a href="#2">Independent Floor in Noida Extension</a>
+                    <a href="#3">Independent Floor in Greater Noida</a>
+                    <a href="#4">Independent Floor in Ghaziabad</a>
+                    <a href="#5">Independent Floor in Delhi</a>
+                    <a href="#7">Independent Floor in Gurugram</a>
+                    <a href="#9">Independent Floor in Chandigarh</a>
+                    <a href="#11">Independent Floor in Meerut</a>
+                    <a href="#12">Independent Floor in Dehradun</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">
         <Footer />

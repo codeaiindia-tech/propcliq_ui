@@ -4,7 +4,7 @@ const ContactMeta = () => {
   const contactInfoData = [
     {
       text: "Address",
-      info: "G-75, Jaitpur, Badarpur, New Delhi",
+      info: "Jaitpur, Badarpur, New Delhi",
       link: "#", // Empty link value for the first object
     },
     {
