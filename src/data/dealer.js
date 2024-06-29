@@ -1,0 +1,55 @@
+module.exports = [
+  {
+    id: 10,
+    title: "Great Work",
+    quote:
+      "Easy to use platform and amazing services by propcliq team. Really great work from Propcliq people.",
+    stars: 4,
+    image: "/images/testimonials/testimonial-1.png",
+    name: "Prem Chand",
+    company: "Homemaker",
+    location: "Greater Noida",
+    location2: "Yamuna Expressway",
+    experience: 32,
+    properties: 100,
+  },
+  {
+    id: 11,
+    title: "Supportive team",
+    quote:
+      " Awsome work done by Propcliq team and they have helped a lot by planning a quick sell for my property",
+    stars: 5,
+    image: "/images/testimonials/testimonial-2.png",
+    name: "Rahul Seikh",
+    company: "Soft. Engineer",
+    location: "Noida Extension",
+    experience: 38,
+    properties: 116,
+  },
+  {
+    id: 12,
+    title: "User friendly",
+    quote:
+      "Amazing design, easy to upload my properties on propcliq application and frequent leads followup which made me easily take decision for my home.",
+    stars: 5,
+    image: "/images/testimonials/testimonial-3.png",
+    name: "Arjun Kumar",
+    company: "Builder",
+    location: "Noida Sector 150",
+    experience: 22,
+    properties: 19,
+  },
+  {
+    id: 13,
+    title: "Great Package offered",
+    quote:
+      "The packages they are offering is very pocket freindly and affordable for brokers like us who have to pay a heavy amount for each lead.",
+    stars: 4,
+    image: "/images/testimonials/testimonial-4.png",
+    name: "Arpit Nagpal",
+    company: "Broker",
+    location: "Noida Sector 90",
+    experience: 20,
+    properties: 26,
+  },
+];

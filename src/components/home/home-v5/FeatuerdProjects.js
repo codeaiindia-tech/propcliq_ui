@@ -6,7 +6,7 @@ import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-const FeatuerdProjects = ({properties}) => {
+const FeatuerdProjects = ({ properties }) => {
   return (
     <>
       <Swiper
@@ -41,16 +41,21 @@ const FeatuerdProjects = ({properties}) => {
             <div className="item">
               <div className="listing-style7 mb60">
                 <div className="list-thumb">
-                  <Image
-                    width={400}
-                    height={185}
-                    className="w-100 h-100 cover"
-                    src="/images/cf611f4cdd313f2.jpeg"
-                    alt="listings"
-                    style={{width:'400px !important', height:'185px !important'}}
-                  />
+                  <Link href={`/project/${listing?._id}`}>
+                    <Image
+                      width={400}
+                      height={185}
+                      className="w-100 h-100 cover"
+                      src="/images/cf611f4cdd313f2.jpeg"
+                      alt="listings"
+                      style={{
+                        width: "400px !important",
+                        height: "185px !important",
+                      }}
+                    />
+                  </Link>
 
-{/* <Image
+                  {/* <Image
                   width={90}
                   height={75}
                   src="/images/propCliq.jpg"
@@ -71,7 +76,9 @@ const FeatuerdProjects = ({properties}) => {
                 </div>
                 <div className="list-content">
                   <h6 className="list-title">
-                    <Link href={`/project/${listing?._id}`}>{listing?.name}</Link>
+                    <Link href={`/project/${listing?._id}`}>
+                      {listing?.name}
+                    </Link>
                   </h6>
 
                   <div className="d-flex justify-content-between align-items-center">

@@ -41,19 +41,21 @@ const FeaturedListings = ({ properties }) => {
             <div className="item">
               <div className="listing-style7 mb60">
                 <div className="list-thumb">
-                  <Image
-                    width={400}
-                    height={185}
-                    className="w-100 h-100 cover"
-                    src={
-                      listing?.files[0]?.path || "/images/listings/g4-10.jpg"
-                    }
-                    alt="listings"
-                    style={{
-                      width: "400px !important",
-                      height: "185px !important",
-                    }}
-                  />
+                  <Link href={`/property/${listing?._id}`}>
+                    <Image
+                      width={400}
+                      height={185}
+                      className="w-100 h-100 cover"
+                      src={
+                        listing?.files[0]?.path || "/images/listings/g4-10.jpg"
+                      }
+                      alt="listings"
+                      style={{
+                        width: "400px !important",
+                        height: "185px !important",
+                      }}
+                    />
+                  </Link>
                   <div className="sale-sticker-wrap">
                     <div className="list-tag rounded-0 fz12">
                       <span className="flaticon-electricity" />
@@ -87,7 +89,9 @@ const FeaturedListings = ({ properties }) => {
                   <div className="d-flex justify-content-between align-items-center">
                     {listing.service !== "Sell" ? (
                       <div className="list-price">
-                        {listing.monthly_rent} / <span>mo</span>
+                        <Link href={`/property/${listing?._id}`}>
+                          {listing.monthly_rent} / <span>mo</span>
+                        </Link>
                       </div>
                     ) : (
                       <>
@@ -101,7 +105,9 @@ const FeaturedListings = ({ properties }) => {
                           </Link>
                           <p>
                             <h6 className="list-title">
-                              INR {listing?.monthly_rent}
+                              <Link href={`/property/${listing?._id}`}>
+                                INR {listing?.monthly_rent}
+                              </Link>
                             </h6>
                           </p>
                         </p>

@@ -1,51 +1,51 @@
 import React from "react";
 
-const PropertyDetails = ({ data }) => {
-  console.log("data s s   ", data);
+const ProjectDetails = ({ projectData }) => {
+  console.log("data", projectData);
 
   const columns = [
     [
       {
         label: "Property ID",
-        value: data._id.slice(0, 2),
+        value: projectData._id.slice(0, 2),
       },
       {
         label: "Price",
-        value: data.monthly_rent,
+        value: projectData.show_price_on_website,
       },
       {
-        label: "Property Size",
-        value: data.built_up_area,
+        label: "Project Size",
+        value: projectData.project_size,
       },
       {
-        label: "Bathrooms",
-        value: data.bathroom,
+        label: "Builder Name",
+        value: projectData.builder_display_name,
       },
       {
-        label: "bhk",
-        value: data.bhk,
+        label: "Project Name",
+        value: projectData.display_name,
       },
     ],
     [
       {
-        label: "Age of Property",
-        value: data.age_of_property,
+        label: "RERA No",
+        value: projectData.rera_registration_number,
       },
       {
-        label: "Covered Parking",
-        value: data.covered_parking,
-      },
-      {
-        label: "Category",
-        value: data.category,
+        label: "No of Towers",
+        value: projectData.number_of_towers,
       },
       {
         label: "Property Type",
-        value: data.property_type,
+        value: projectData.property_type,
       },
       {
-        label: "Property Status",
-        value: data.service,
+        label: "Project Status",
+        value: projectData.project_status,
+      },
+      {
+        label: "Bank List",
+        value: projectData.bank_list,
       },
     ],
   ];
@@ -77,4 +77,4 @@ const PropertyDetails = ({ data }) => {
   );
 };
 
-export default PropertyDetails;
+export default ProjectDetails;

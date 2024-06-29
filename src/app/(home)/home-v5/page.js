@@ -19,6 +19,7 @@ import ApartmentTypes from "@/components/home/home-v5/ApartmentTypes";
 import Cta from "@/components/home/home-v5/Cta";
 import Link from "next/link";
 import PropertyListing from "@/components/home/home-v5/PropertyListing";
+import Dealer from "@/components/home/home-v5/Dealer";
 
 // export const metadata = {
 //   title: "Home v5 || Homez - Real Estate NextJS Template",
@@ -225,9 +226,13 @@ const Home_V5 = () => {
           {/* End header */}
 
           <div className="row">
-            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
-              <div className="feature-listing-slider">
-                {data ? <FeaturedListings properties={data.data} /> : null}
+            <div className="col-lg-12">
+              <div
+                className="dealer-slider"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <Dealer />
               </div>
             </div>
           </div>

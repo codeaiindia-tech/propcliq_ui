@@ -34,13 +34,33 @@ const FilterContent = () => {
     setActiveTab(tab);
   };
 
+  const handleOnChangeMinPrice = (e) => {
+    let valuess = { min: e.target.value, max: values.priceMax };
+    setPrice({ value: valuess });
+    setValues({
+      ...values,
+      priceMin: valuess.min,
+      priceMax: valuess.max,
+    });
+  };
+
+  const handleOnChangeMaxPrice = (e) => {
+    let valuess = { min: values.priceMin, max: e.target.value };
+    setPrice({ value: valuess });
+    setValues({
+      ...values,
+      priceMin: valuess.min,
+      priceMax: valuess.max,
+    });
+  };
+
   const tabs = [
     { id: "rent", label: "Rent" },
     { id: "buy", label: "Buy" },
     { id: "sold", label: "Sold" },
   ];
 
-  const [price, setPrice] = useState({ value: { min: 0, max: 0 } });
+  const [price, setPrice] = useState({ value: { min: 0, max: 50000000 } });
 
   // price range handler
   const handleOnChange = (value) => {
@@ -189,21 +209,48 @@ const FilterContent = () => {
                           <div className="range-wrapper at-home10">
                             <InputRange
                               formatLabel={() => ``}
-                              maxValue={100000}
+                              maxValue={50000000}
                               minValue={0}
                               value={price.value}
                               onChange={(value) => handleOnChange(value)}
                               id="slider"
                             />
                             <div className="d-flex align-items-center">
-                              <span id="slider-range-value1">
-                                {/* <input type="text" value={price.value.max} onChange={handleOnChange} /> */}
+                              {/* <span id="slider-range-value1">
                                 {price.value.min}
-                              </span>
+                              </span> */}
+                              <input
+                                className="form-control bgc-f7 bdrs12 ps-0"
+                                type="text"
+                                name="priceMin"
+                                id="priceMin"
+                                value={price.value.min}
+                                onChange={(value) =>
+                                  handleOnChangeMinPrice(value)
+                                }
+                                style={{
+                                  border: "1px solid #ddd",
+                                  height: "50px",
+                                }}
+                              />
                               <i className="fa-sharp fa-solid fa-minus mx-2 dark-color icon" />
-                              <span id="slider-range-value2">
+                              {/* <span id="slider-range-value2">
                                 {price.value.max}
-                              </span>
+                              </span> */}
+                              <input
+                                className="form-control bgc-f7 bdrs12 ps-0"
+                                type="text"
+                                name="priceMax"
+                                id="priceMax"
+                                value={price.value.max}
+                                onChange={(value) =>
+                                  handleOnChangeMaxPrice(value)
+                                }
+                                style={{
+                                  border: "1px solid #ddd",
+                                  height: "50px",
+                                }}
+                              />
                             </div>
                           </div>
                         </div>

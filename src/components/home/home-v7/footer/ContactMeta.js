@@ -21,7 +21,6 @@ const ContactMeta = () => {
 
   return (
     <div className="row mb-4 mb-lg-5">
-      2w2w2w2w2w2w2
       {contactInfoData.map((contact, index) => (
         <div className="contact-info mb25" key={index}>
           <p className="text mb5">{contact.text}</p>

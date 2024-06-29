@@ -28,6 +28,8 @@ import MortgageCalculator from "@/components/property/property-single-style/comm
 import WalkScore from "@/components/property/property-single-style/common/WalkScore";
 import Image from "next/image";
 import Link from "next/link";
+import ProjectDetails from "@/components/property/property-single-style/common/ProjectDetails";
+import ProjectAddress from "@/components/property/property-single-style/common/ProjectAddress";
 
 // export const metadata = {
 //   title: "Property Single V1 || Homez - Real Estate NextJS Template",
@@ -118,7 +120,7 @@ const ProjectV1 = ({ params }) => {
 
                   <h4 className="title fz17 mb30 mt50">Property Details</h4>
                   <div className="row">
-                    <PropertyDetails projectData={data.data} />
+                    <ProjectDetails projectData={data.data} />
                   </div>
                 </div>
                 {/* End .ps-widget */}
@@ -126,7 +128,7 @@ const ProjectV1 = ({ params }) => {
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30 mt30">Address</h4>
                   <div className="row">
-                    <PropertyAddress projectData={data.data} />
+                    <ProjectAddress projectData={data.data} />
                   </div>
                 </div>
                 {/* End .ps-widget */}
