@@ -15,7 +15,7 @@ const ProjectAddress = ({ projectData }) => {
   return (
     <>
       {addresses.map((address, index) => (
-        <div className="col-md-12">
+        <div className="col-md-12" key={index}>
           <div className="d-flex justify-content-between">
             <div className="pd-list">
               <p className="fw600 mb10 ff-heading dark-color">Address</p>
