@@ -86,7 +86,7 @@ const Header = ({ onChildClick }) => {
                 <div className="col-auto">
                   <div className="d-flex align-items-center">
                     <a
-                      href="https://frontend.propcliq.com"
+                      href="https://my.propcliq.com"
                       className="login-info d-flex align-items-center"
                       role="button"
                     >
