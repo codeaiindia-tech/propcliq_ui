@@ -155,7 +155,7 @@ const Home_V5 = () => {
 
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
-              <div className="feature-listing-slider">
+              <div className="feature-project-slider">
                 {projects ? (
                   <FeatuerdProjects properties={projects.data} />
                 ) : null}

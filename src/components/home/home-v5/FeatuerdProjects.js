@@ -13,11 +13,11 @@ const FeatuerdProjects = ({ properties }) => {
         spaceBetween={30}
         modules={[Navigation, Pagination]}
         navigation={{
-          nextEl: ".featured-next__active",
-          prevEl: ".featured-prev__active",
+          nextEl: ".feature-project-slider-next__active",
+          prevEl: ".feature-project-slider-prev__active",
         }}
         pagination={{
-          el: ".featured-pagination__active",
+          el: ".feature-project-slider-pagination__active",
           clickable: true,
         }}
         slidesPerView={1}
@@ -106,19 +106,19 @@ const FeatuerdProjects = ({ properties }) => {
 
       <div className="row align-items-center justify-content-center">
         <div className="col-auto">
-          <button className="featured-prev__active swiper_button">
+          <button className="feature-project-slider-prev__active swiper_button">
             <i className="far fa-arrow-left-long" />
           </button>
         </div>
         {/* End prev */}
 
         <div className="col-auto">
-          <div className="pagination swiper--pagination featured-pagination__active" />
+          <div className="pagination swiper--pagination feature-project-slider-pagination__active" />
         </div>
         {/* End pagination */}
 
         <div className="col-auto">
-          <button className="featured-next__active swiper_button">
+          <button className="feature-project-slider-next__active swiper_button">
             <i className="far fa-arrow-right-long" />
           </button>
         </div>
