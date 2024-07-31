@@ -165,12 +165,12 @@ const SingleV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">What&apos;s Nearby?</h4>
                   <div className="row">
                     <PropertyNearby data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -186,12 +186,12 @@ const SingleV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Mortgage Calculator</h4>
                   <div className="row">
                     <MortgageCalculator data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -209,26 +209,26 @@ const SingleV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Get More Information</h4>
                   <InfoWithForm data={data.data} />
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <div className="row">
-                    {/* <AllComments /> */}
+                    <AllComments />
                     <AllReviews data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Leave A Review</h4>
                   <div className="row">
                     <ReviewBoxForm data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
               </div>
               {/* End .col-8 */}
@@ -242,12 +242,14 @@ const SingleV1 = ({ params }) => {
                   </div>
                   {/* End .Schedule a tour */}
 
-                  <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
+                  {/* <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
                     <div className="widget-wrapper mb-0">
-                      <h6 className="title fz17 mb30">Get More Information</h6>
+                      <h6 className="title fz17 mb30">
+                        Get More Information
+                      </h6>
                       <ContactWithAgent data={data.data} />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -262,31 +264,26 @@ const SingleV1 = ({ params }) => {
                   </p>
                 </div>
               </div>
-              {/* End header */}
 
-              <div className="col-auto mb30">
+              {/* <div className="col-auto mb30">
                 <div className="row align-items-center justify-content-center">
                   <div className="col-auto">
                     <button className="featured-prev__active swiper_button">
                       <i className="far fa-arrow-left-long" />
                     </button>
                   </div>
-                  {/* End prev */}
 
                   <div className="col-auto">
                     <div className="pagination swiper--pagination featured-pagination__active" />
                   </div>
-                  {/* End pagination */}
 
                   <div className="col-auto">
                     <button className="featured-next__active swiper_button">
                       <i className="far fa-arrow-right-long" />
                     </button>
                   </div>
-                  {/* End Next */}
                 </div>
-                {/* End .col for navigation and pagination */}
-              </div>
+              </div> */}
               {/* End .col for navigation and pagination */}
             </div>
             {/* End .row */}

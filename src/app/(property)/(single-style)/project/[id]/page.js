@@ -177,15 +177,15 @@ const ProjectV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">What&apos;s Nearby?</h4>
                   <div className="row">
                     <PropertyNearby projectData={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Walkscore</h4>
                   <div className="row">
                     <div className="col-md-12">
@@ -195,15 +195,15 @@ const ProjectV1 = ({ params }) => {
                       <WalkScore projectData={data.data} />
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Mortgage Calculator</h4>
                   <div className="row">
                     <MortgageCalculator projectData={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -221,26 +221,26 @@ const ProjectV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Get More Information</h4>
                   <InfoWithForm projectData={data.data} />
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <div className="row">
-                    {/* <AllComments /> */}
+                    <AllComments />
                     <AllReviews projectData={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Leave A Review</h4>
                   <div className="row">
                     <ReviewBoxForm projectData={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
               </div>
               {/* End .col-8 */}
@@ -254,18 +254,18 @@ const ProjectV1 = ({ params }) => {
                   </div>
                   {/* End .Schedule a tour */}
 
-                  <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
+                  {/* <div className="agen-personal-info position-relative bgc-white default-box-shadow1 bdrs12 p30 mt30">
                     <div className="widget-wrapper mb-0">
                       <h6 className="title fz17 mb30">Get More Information</h6>
                       <ContactWithAgent projectData={data.data} />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
             {/* End .row */}
 
-            <div className="row mt30 align-items-center justify-content-between">
+            {/* <div className="row mt30 align-items-center justify-content-between">
               <div className="col-auto">
                 <div className="main-title">
                   <h2 className="title">Discover Our Featured Listings</h2>
@@ -274,7 +274,6 @@ const ProjectV1 = ({ params }) => {
                   </p>
                 </div>
               </div>
-              {/* End header */}
 
               <div className="col-auto mb30">
                 <div className="row align-items-center justify-content-center">
@@ -283,33 +282,33 @@ const ProjectV1 = ({ params }) => {
                       <i className="far fa-arrow-left-long" />
                     </button>
                   </div>
-                  {/* End prev */}
+                  
 
                   <div className="col-auto">
                     <div className="pagination swiper--pagination featured-pagination__active" />
                   </div>
-                  {/* End pagination */}
+                  
 
                   <div className="col-auto">
                     <button className="featured-next__active swiper_button">
                       <i className="far fa-arrow-right-long" />
                     </button>
                   </div>
-                  {/* End Next */}
+                  
                 </div>
-                {/* End .col for navigation and pagination */}
+                
               </div>
-              {/* End .col for navigation and pagination */}
-            </div>
+              
+            </div> */}
             {/* End .row */}
 
-            <div className="row">
+            {/* <div className="row">
               <div className="col-lg-12">
-                <div className="property-city-slider">
-                  <NearbySimilarProperty />
-                </div>
+                <div className="property-city-slider"> */}
+            {/* <NearbySimilarProperty /> */}
+            {/* </div>
               </div>
-            </div>
+            </div> */}
             {/* End .row */}
           </div>
           {/* End .container */}
