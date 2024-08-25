@@ -22,11 +22,11 @@ export default function PropertyFiltering() {
 
   useEffect(() => {
     setPageItems(
-      sortedFilteredData.slice((pageNumber - 1) * 6, pageNumber * 6)
+      sortedFilteredData.slice((pageNumber - 1) * 10, pageNumber * 10)
     );
     setPageContentTrac([
-      (pageNumber - 1) * 6 + 1,
-      pageNumber * 6,
+      (pageNumber - 1) * 10 + 1,
+      pageNumber * 10,
       sortedFilteredData.length,
     ]);
   }, [pageNumber, sortedFilteredData]);
@@ -127,77 +127,97 @@ export default function PropertyFiltering() {
   };
 
   useEffect(() => {
-    const refItems = listings.filter((elm) => {
-      if (listingStatus == "All") {
-        return true;
-      } else if (listingStatus == "Buy") {
-        return !elm.forRent;
-      } else if (listingStatus == "Rent") {
-        return elm.forRent;
-      }
-    });
-
-    let filteredArrays = [];
-
-    if (propertyTypes.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        propertyTypes.includes(elm.propertyType)
+    console.log("paraamst :::::: HOME LISTING COL-2 ::::::::");
+    const fetchData = async () => {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      };
+      const response = await fetch(
+        `${process.env.baseUrl}/properties`,
+        requestOptions,
+        { cache: "no-store" }
       );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    filteredArrays = [
-      ...filteredArrays,
-      refItems.filter((el) => el.bed >= bedrooms),
-    ];
-    filteredArrays = [
-      ...filteredArrays,
-      refItems.filter((el) => el.bath >= bathroms),
-    ];
+      const data = await response.json();
+      setFilteredData(data.data);
+    };
+    fetchData();
 
-    filteredArrays = [
-      ...filteredArrays,
-      !categories.length
-        ? [...refItems]
-        : refItems.filter((elm) =>
-            categories.every((elem) => elm.features.includes(elem))
-          ),
-    ];
 
-    if (location != "All Cities") {
-      filteredArrays = [
-        ...filteredArrays,
-        refItems.filter((el) => el.city == location),
-      ];
-    }
 
-    if (priceRange.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          Number(elm.price.split("$")[1].split(",").join("")) >=
-            priceRange[0] &&
-          Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (squirefeet.length > 0 && squirefeet[1]) {
-      const filtered = refItems.filter(
-        (elm) => elm.sqft >= squirefeet[0] && elm.sqft <= squirefeet[1]
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (yearBuild.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          elm.yearBuilding >= yearBuild[0] && elm.yearBuilding <= yearBuild[1]
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
 
-    const commonItems = refItems.filter((item) =>
-      filteredArrays.every((array) => array.includes(item))
-    );
+    // const refItems = listings.filter((elm) => {
+    //   if (listingStatus == "All") {
+    //     return true;
+    //   } else if (listingStatus == "Buy") {
+    //     return !elm.forRent;
+    //   } else if (listingStatus == "Rent") {
+    //     return elm.forRent;
+    //   }
+    // });
 
-    setFilteredData(commonItems);
+    // let filteredArrays = [];
+
+    // if (propertyTypes.length > 0) {
+    //   const filtered = refItems.filter((elm) =>
+    //     propertyTypes.includes(elm.propertyType)
+    //   );
+    //   filteredArrays = [...filteredArrays, filtered];
+    // }
+    // filteredArrays = [
+    //   ...filteredArrays,
+    //   refItems.filter((el) => el.bed >= bedrooms),
+    // ];
+    // filteredArrays = [
+    //   ...filteredArrays,
+    //   refItems.filter((el) => el.bath >= bathroms),
+    // ];
+
+    // filteredArrays = [
+    //   ...filteredArrays,
+    //   !categories.length
+    //     ? [...refItems]
+    //     : refItems.filter((elm) =>
+    //         categories.every((elem) => elm.features.includes(elem))
+    //       ),
+    // ];
+
+    // if (location != "All Cities") {
+    //   filteredArrays = [
+    //     ...filteredArrays,
+    //     refItems.filter((el) => el.city == location),
+    //   ];
+    // }
+
+    // if (priceRange.length > 0) {
+    //   const filtered = refItems.filter(
+    //     (elm) =>
+    //       Number(elm.price.split("$")[1].split(",").join("")) >=
+    //         priceRange[0] &&
+    //       Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
+    //   );
+    //   filteredArrays = [...filteredArrays, filtered];
+    // }
+    // if (squirefeet.length > 0 && squirefeet[1]) {
+    //   const filtered = refItems.filter(
+    //     (elm) => elm.sqft >= squirefeet[0] && elm.sqft <= squirefeet[1]
+    //   );
+    //   filteredArrays = [...filteredArrays, filtered];
+    // }
+    // if (yearBuild.length > 0) {
+    //   const filtered = refItems.filter(
+    //     (elm) =>
+    //       elm.yearBuilding >= yearBuild[0] && elm.yearBuilding <= yearBuild[1]
+    //   );
+    //   filteredArrays = [...filteredArrays, filtered];
+    // }
+
+    // const commonItems = refItems.filter((item) =>
+    //   filteredArrays.every((array) => array.includes(item))
+    // );
+
+    // setFilteredData(commonItems);
   }, [
     listingStatus,
     propertyTypes,
@@ -276,7 +296,7 @@ export default function PropertyFiltering() {
         </div>
         {/* <!-- Advance Feature Modal End --> */}
 
-        <div className="row">
+        {/* <div className="row">
           <TopFilterBar
             pageContentTrac={pageContentTrac}
             colstyle={colstyle}
@@ -284,9 +304,12 @@ export default function PropertyFiltering() {
             filterFunctions={filterFunctions}
             setCurrentSortingOption={setCurrentSortingOption}
           />
-        </div>
+        </div> */}
         {/* End TopFilterBar */}
 
+        <div className="row">
+          <h6 className="list-title">{filteredData.length} properties</h6>
+        </div>
         <div className="row">
           <FeaturedListings colstyle={colstyle} data={pageItems} />
         </div>
@@ -294,7 +317,7 @@ export default function PropertyFiltering() {
 
         <div className="row">
           <PaginationTwo
-            pageCapacity={6}
+            pageCapacity={10}
             data={sortedFilteredData}
             pageNumber={pageNumber}
             setPageNumber={setPageNumber}

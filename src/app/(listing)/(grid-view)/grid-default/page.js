@@ -48,7 +48,7 @@ const GridDefault = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <PropertyFiltering/>
+      <PropertyFiltering />
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

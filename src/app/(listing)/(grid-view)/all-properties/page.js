@@ -4,9 +4,6 @@ import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import PropertyFiltering from "@/components/listing/grid-view/grid-full-2-col/PropertyFiltering";
 
-
-
-
 import React from "react";
 
 export const metadata = {
@@ -30,11 +27,11 @@ const GridFull2Col = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title">New York Homes for Sale</h2>
-                <div className="breadcumb-list">
+                <h2 className="title">All Properties</h2>
+                {/* <div className="breadcumb-list">
                   <a href="#">Home</a>
                   <a href="#">For Rent</a>
-                </div>
+                </div> */}
                 <a
                   className="filter-btn-left mobile-filter-btn d-block d-lg-none"
                   data-bs-toggle="offcanvas"
@@ -52,8 +49,8 @@ const GridFull2Col = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <PropertyFiltering/>
-      
+      <PropertyFiltering />
+
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

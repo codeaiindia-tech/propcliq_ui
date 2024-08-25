@@ -183,8 +183,8 @@ const Home_V5 = () => {
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="/grid-full-2-col">
-                  See All Properties
+                <Link className="ud-btn2" href="/all-properties">
+                  See All Properties {data ? `(${data.data.length})` : null}
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>

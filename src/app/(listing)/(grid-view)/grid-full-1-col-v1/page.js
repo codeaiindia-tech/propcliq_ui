@@ -3,7 +3,6 @@ import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import PropertyFiltering from "@/components/listing/grid-view/grid-full-1-col-v1/PropertyFiltering";
 
-
 import React from "react";
 
 export const metadata = {
@@ -49,8 +48,8 @@ const GridFull1ColV1 = () => {
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <PropertyFiltering/>
-      
+      <PropertyFiltering />
+
       {/* Property Filtering */}
 
       {/* Start Our Footer */}

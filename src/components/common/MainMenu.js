@@ -79,7 +79,7 @@ const MainMenu = () => {
       <li className="megamenu_style dropitem">
         <a className="list-item" href="#">
           <span className={topMenu == "listing" ? "title menuActive" : "title"}>
-            Listing
+            About Us
           </span>
           {/* <span className="arrow"></span> */}
         </a>
@@ -108,7 +108,7 @@ const MainMenu = () => {
           <span
             className={topMenu == "property" ? "title menuActive" : "title"}
           >
-            Property
+            Contact Us
           </span>
           {/* <span className="arrow"></span> */}
         </a>
@@ -144,9 +144,9 @@ const MainMenu = () => {
 
       <li className="visible_list dropitem">
         <a className="list-item" href="#">
-          <span className={topMenu == "blog" ? "title menuActive" : "title"}>
-            Blog
-          </span>
+          <span
+            className={topMenu == "blog" ? "title menuActive" : "title"}
+          ></span>
           {/* <span className="arrow"></span> */}
         </a>
         {/* <ul className="sub-menu">
@@ -160,13 +160,13 @@ const MainMenu = () => {
         </ul> */}
       </li>
 
-      <li
+      {/* <li
         href="/dashboard-add-property"
         className="ud-btn btn-thm me-0 me-sm-4 add-prop-menu"
       >
         Post new Property
         <i className="fal fa-arrow-right-long" />
-      </li>
+      </li> */}
 
       {/* End pages Items */}
     </ul>
