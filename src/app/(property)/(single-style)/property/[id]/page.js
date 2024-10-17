@@ -129,15 +129,15 @@ const SingleV1 = ({ params }) => {
                 </div>
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                  <h4 className="title fz17 mb30">Energy Class</h4>
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                  <h4 className="title fz17 mb30">Energy Class2222222</h4>
                   <div className="row">
                     <EnergyClass data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Floor Plans</h4>
                   <div className="row">
                     <div className="col-md-12">
@@ -146,23 +146,23 @@ const SingleV1 = ({ params }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 ">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 ">
                   <h4 className="title fz17 mb30">Video</h4>
                   <div className="row">
                     <PropertyVideo data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">360° Virtual Tour</h4>
                   <div className="row">
                     <VirtualTour360 data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -173,7 +173,7 @@ const SingleV1 = ({ params }) => {
                 </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Walkscore</h4>
                   <div className="row">
                     <div className="col-md-12">
@@ -183,7 +183,7 @@ const SingleV1 = ({ params }) => {
                       <WalkScore data={data.data} />
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -194,19 +194,19 @@ const SingleV1 = ({ params }) => {
                 </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <div className="row">
                     <PropertyViews data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
-                <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+                {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                   <h4 className="title fz17 mb30">Home Value</h4>
                   <div className="row">
                     <HomeValueChart data={data.data} />
                   </div>
-                </div>
+                </div> */}
                 {/* End .ps-widget */}
 
                 {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
@@ -256,14 +256,14 @@ const SingleV1 = ({ params }) => {
             {/* End .row */}
 
             <div className="row mt30 align-items-center justify-content-between">
-              <div className="col-auto">
+              {/* <div className="col-auto">
                 <div className="main-title">
                   <h2 className="title">Discover Our Featured Listings</h2>
                   <p className="paragraph">
                     Aliquam lacinia diam quis lacus euismod
                   </p>
                 </div>
-              </div>
+              </div> */}
 
               {/* <div className="col-auto mb30">
                 <div className="row align-items-center justify-content-center">
@@ -288,13 +288,13 @@ const SingleV1 = ({ params }) => {
             </div>
             {/* End .row */}
 
-            <div className="row">
+            {/* <div className="row">
               <div className="col-lg-12">
                 <div className="property-city-slider">
                   <NearbySimilarProperty />
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* End .row */}
           </div>
           {/* End .container */}
