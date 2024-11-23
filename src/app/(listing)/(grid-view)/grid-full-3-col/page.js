@@ -1,6 +1,4 @@
-'use client'
-
-
+"use client";
 
 import { useSearchParams } from "next/navigation";
 import DefaultHeader from "@/components/common/DefaultHeader";
@@ -11,11 +9,11 @@ import MobileMenu from "@/components/common/mobile-menu";
 
 import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/ProperteyFiltering";
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 const GridFull3Col = () => {
   const [properties, setProperties] = useState([]);
-  const urlParams = useSearchParams()
+  const urlParams = useSearchParams();
   const paramsObj = Array.from(urlParams.keys()).reduce(
     (acc, val) => ({ ...acc, [val]: urlParams.get(val) }),
     {}
@@ -25,21 +23,25 @@ const GridFull3Col = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(paramsObj)
+      body: JSON.stringify(paramsObj),
     };
-    const res = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {cache: 'no-store'});
+    const res = await fetch(
+      `${process.env.baseUrl}/properties`,
+      requestOptions,
+      { cache: "no-store" }
+    );
     const prop = await res.json();
     setProperties(prop.data);
-  }
+  };
 
-  console.log("paramsObj:::::", paramsObj)
+  console.log("paramsObj:::::", paramsObj);
   useEffect(() => {
-    try{
+    try {
       getProperties(paramsObj);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }, [paramsObj])
+  }, []);
 
   return (
     <>
@@ -58,7 +60,9 @@ const GridFull3Col = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title">{paramsObj.search}, {paramsObj.looking}, {paramsObj.location} </h2>
+                <h2 className="title">
+                  {paramsObj.search}, {paramsObj.looking}, {paramsObj.location}{" "}
+                </h2>
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
                   <a href="#">For Rent</a>

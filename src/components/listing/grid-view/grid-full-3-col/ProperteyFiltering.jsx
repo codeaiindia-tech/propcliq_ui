@@ -258,7 +258,9 @@ export default function ProperteyFiltering(props) {
     
   return (
     <section className="pt0 pb90 bgc-f7">
+      
         <div className="container">
+        <h1>Result count : {JSON.stringify(props.properties.length)}</h1>
           {/* start mobile filter sidebar */}
           <div
             className="offcanvas offcanvas-start p-0"

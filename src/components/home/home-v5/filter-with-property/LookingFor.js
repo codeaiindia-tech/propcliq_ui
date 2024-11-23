@@ -5,8 +5,8 @@ import Select from "react-select";
 const LookingFor = (props) => {
   const [looking, setLooking] = useState("");
   const inqueryType = [
-    { value: "Apartment", label: "Apartment" },
     { value: "Independent Floor", label: "Independent Floor" },
+    { value: "Apartment", label: "Apartment" },
     { value: "Independent House", label: "Independent House" },
     { value: "Villa", label: "Villa" },
     { value: "Plot", label: "Plot" },

@@ -3,6 +3,38 @@
 import listings from "@/data/listings";
 import React from "react";
 
+function timeAgo(date) {
+  const now = new Date();
+  const secondsPast = (now.getTime() - date.getTime()) / 1000;
+
+  if (secondsPast < 60) {
+    return `${Math.floor(secondsPast)} seconds ago`;
+  }
+  if (secondsPast < 3600) {
+    return `${Math.floor(secondsPast / 60)} minutes ago`;
+  }
+  if (secondsPast < 86400) {
+    return `${Math.floor(secondsPast / 3600)} hours ago`;
+  }
+  if (secondsPast < 2592000) {
+    return `${Math.floor(secondsPast / 86400)} days ago`;
+  }
+  if (secondsPast < 31536000) {
+    return `${Math.floor(secondsPast / 2592000)} months ago`;
+  }
+  return `${Math.floor(secondsPast / 31536000)} years ago`;
+}
+
+function fetchRequirementMetadata(createdAt) {
+  // Example date (replace with your actual date)
+  const date = new Date(createdAt);
+
+  // Format the date to a human-readable format
+  const formattedDate = timeAgo(date);
+
+  return `${formattedDate}`;
+}
+
 const PropertyHeader = ({ id, data }) => {
   return (
     <>
@@ -23,13 +55,13 @@ const PropertyHeader = ({ id, data }) => {
               <i className="fas fa-circle fz10 pe-2" />
               For {data?.service}
             </a>
-            {/* <a
+            <a
               className="ff-heading bdrr1 fz15 pr10 ml10 ml0-sm bdrrn-sm"
               href="#"
             >
               <i className="far fa-clock pe-2" />
-              {data?.age_of_property} ------- {data?.age_of_property} years ago
-            </a> */}
+              Posted On: {fetchRequirementMetadata(data?.createdAt)}
+            </a>
           </div>
           <div className="property-meta d-flex align-items-center">
             <a className="text fz15" href="#">
