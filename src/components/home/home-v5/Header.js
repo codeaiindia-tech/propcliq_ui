@@ -7,8 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 
-// /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v2/hero/HeroContent.js
-// /Users/himanshukhandelwal/propcliq/homez/propcliq-ui/src/components/home/home-v5/filter-with-property/FilterContent.js
 import HeroContent from "../home-v2/hero/HeroContent";
 import FilterContent from "./filter-with-property/FilterContent";
 import FilterContentHeader from "./filter-with-property/FilterContentHeader";
@@ -22,36 +20,37 @@ const Header = ({ onChildClick }) => {
   const changeBackground = useCallback(() => {
     if (window.scrollY >= 10) {
       setNavbar(true);
-      // props.sendDataToParent(navbar);
 
       if (window.scrollY >= 500) {
-        onChildClick(true);
+        onChildClick?.(true);
         setMenubar(true);
+      } else {
+        onChildClick?.(false);
+        setMenubar(false);
       }
     } else {
       setNavbar(false);
-      // props.sendDataToParent(navbar);
-      onChildClick(false);
+      onChildClick?.(false);
       setMenubar(false);
     }
-  });
+  }, [onChildClick]);
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
     return () => {
       window.removeEventListener("scroll", changeBackground);
     };
-  }, []);
+  }, [changeBackground]);
 
   return (
     <>
       <header
-        className={`header-nav nav-homepage-style main-menu  ${
+        className={`header-nav nav-homepage-style main-menu ${
           navbar ? "slideInDown animated" : ""
         }`}
       >
         {!menubar ? (
-          <nav className="posr">
+          <nav className="posr bg-red-500">
             <div className="container posr menu_bdrt1">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
@@ -63,10 +62,11 @@ const Header = ({ onChildClick }) => {
                         style={{ position: "relative", right: "100%" }}
                       >
                         <Image
-                          width={90}
-                          height={75}
+                          width={100}
+                          height={100}
                           src="/images/propCliq.jpg"
                           alt="Header Logo"
+                          className="shadow-xl bg-green-500"
                         />
                       </Link>
                       <Link className="header-logo logo2" href="/">
@@ -90,7 +90,7 @@ const Header = ({ onChildClick }) => {
                       className="login-info d-flex align-items-center"
                       role="button"
                     >
-                      <i className="far fa-user-circle fz16 me-2" />{" "}
+                      <i className="far fa-user-circle fz16 me-2" />
                       <span className="d-none d-xl-block">
                         Login / Register
                       </span>
@@ -147,9 +147,7 @@ const Header = ({ onChildClick }) => {
           </nav>
         )}
       </header>
-      {/* End Header */}
 
-      {/* Signup Modal */}
       <div className="signup-modal">
         <div
           className="modal fade"
@@ -158,14 +156,12 @@ const Header = ({ onChildClick }) => {
           aria-labelledby="loginSignupModalLabel"
           aria-hidden="true"
         >
-          <div className="modal-dialog  modal-dialog-scrollable modal-dialog-centered">
+          <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <LoginSignupModal />
           </div>
         </div>
       </div>
-      {/* End Signup Modal */}
 
-      {/* DesktopSidebarMenu */}
       <div
         className="offcanvas offcanvas-end"
         tabIndex="-1"
@@ -174,7 +170,6 @@ const Header = ({ onChildClick }) => {
       >
         <SidebarPanel />
       </div>
-      {/* Sidebar Panel End */}
     </>
   );
 };

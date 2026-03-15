@@ -34,9 +34,9 @@ const MobileMenu = () => {
                   alt="logo"
                 />
               </Link>
-              <Link href="#">
+              <a href="https://my.propcliq.com">
                 <span className="icon fz18 far fa-user-circle" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

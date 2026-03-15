@@ -1,6 +1,5 @@
 "use client";
 
-// Import useState from 'react' library
 import { useState, useEffect } from "react";
 
 import Explore from "@/components/common/Explore";
@@ -21,85 +20,76 @@ import Link from "next/link";
 import PropertyListing from "@/components/home/home-v5/PropertyListing";
 import Dealer from "@/components/home/home-v5/Dealer";
 
-// export const metadata = {
-//   title: "Home v5 || Homez - Real Estate NextJS Template",
-// };
-// export const revalidate = 0;
-
-async function getData() {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({}),
-  };
-  const res = await fetch(`${process.env.baseUrl}/properties`, requestOptions, {
-    cache: "no-store",
-  });
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  // console.log("res.json()", res.json())
-
-  return res.json();
-}
-
-const handleChildClick = (newMessage) => {
-  setMessage(newMessage);
-};
-
 const Home_V5 = () => {
-  // let properties = getData();
-  // console.log("properties ::", properties);
-
   const [message, setMessage] = useState(false);
+  const [data, setData] = useState(null);
+  const [projects, setProject] = useState(null);
+
   const handleChildClick = (newMessage) => {
     setMessage(newMessage);
   };
-  const [data, setData] = useState(null);
-  const [projects, setProject] = useState(null);
+
   useEffect(() => {
-    console.log("paraamst :::::: HOME ::::::::");
     const fetchData = async () => {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
-      };
-      const response = await fetch(
-        `${process.env.baseUrl}/properties`,
-        requestOptions,
-        { cache: "no-store" }
-      );
-      const data = await response.json();
+      try {
+        const baseUrl = process.env.baseUrl;
 
-      console.log("data::::", data);
+        if (!baseUrl) {
+          console.error("NEXT_PUBLIC_BASE_URL is missing");
+          return;
+        }
 
-      setData(data);
+        const response = await fetch(`${baseUrl}/properties`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error(`Properties API failed: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("properties data:", result);
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+        setData(null);
+      }
     };
 
     fetchData();
   }, []);
 
   useEffect(() => {
-    console.log("paraam  ::: ::: st :::::: Projects ::::::::");
     const fetchProjects = async () => {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
-      };
-      const response = await fetch(
-        `${process.env.baseUrl}/projects`,
-        requestOptions,
-        { cache: "no-store" }
-      );
-      const data = await response.json();
-      setProject(data);
+      try {
+        const baseUrl = process.env.baseUrl;
+
+        if (!baseUrl) {
+          console.error("NEXT_PUBLIC_BASE_URL is missing");
+          return;
+        }
+
+        const response = await fetch(`${baseUrl}/projects`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error(`Projects API failed: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("projects data:", result);
+        setProject(result);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        setProject(null);
+      }
     };
 
     fetchProjects();
@@ -107,25 +97,16 @@ const Home_V5 = () => {
 
   return (
     <>
-      {/* Main Header Nav */}
-      {/* <p>Message from Child: {JSON.stringify(message)}</p> */}
       <Header onChildClick={handleChildClick} />
-      {/* <>{JSON.stringify(sendDataToParent)}</> */}
-      {/* End Main Header Nav */}
 
-      {/* Mobile Nav  */}
       <MobileMenu />
-      {/* End Mobile Nav  */}
 
-      {/* Hero Slide */}
       <div className="banner-wrapper position-relative">
         <section className="thumbimg-countnumber-carousel p-0">
           <Hero />
         </section>
       </div>
-      {/* Edn Hero Slide */}
 
-      {/* Filter with properties */}
       <section className="pt-0 pb110 bgc-f7 pb50-md">
         <div className="container">
           <div className="row">
@@ -133,13 +114,9 @@ const Home_V5 = () => {
               {!message ? <FilterWithProperties /> : null}
             </div>
           </div>
-          {/* End .row */}
         </div>
-        {/* End .container */}
       </section>
-      {/* End Filter with properties */}
 
-      {/* Discover Our Featured Listings */}
       <section className="pt-0 pb0 bgc-f7 pb50-md" style={{ marginTop: "-4%" }}>
         <div className="container">
           <div className="row align-items-center" data-aos="fade-up">
@@ -151,12 +128,11 @@ const Home_V5 = () => {
               </div>
             </div>
           </div>
-          {/* End header */}
 
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-project-slider">
-                {projects ? (
+                {projects?.data ? (
                   <FeatuerdProjects properties={projects.data} />
                 ) : null}
               </div>
@@ -164,13 +140,9 @@ const Home_V5 = () => {
           </div>
         </div>
       </section>
-      {/* End Discover Our Featured Listings */}
 
-      {/* CTA */}
       <Cta />
-      {/* CTA */}
 
-      {/* Discover Our Featured properties */}
       <section className="pt-0 bgc-f7 pb50-md">
         <div className="container">
           <div className="row align-items-center boosted" data-aos="fade-up">
@@ -184,26 +156,23 @@ const Home_V5 = () => {
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
                 <Link className="ud-btn2" href="/all-properties">
-                  See All Properties {data ? `(${data.count})` : null}
+                  See All Properties {data?.count ? `(${data.count})` : ""}
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
             </div>
           </div>
-          {/* End header */}
 
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                {data ? <FeaturedListings properties={data.data} /> : null}
+                {data?.data ? <FeaturedListings properties={data.data} /> : null}
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* End Discover Our Featured properties */}
 
-      {/* Discover Our Featured Dealers */}
       <section className=" pt0 bgc-f7 pb50-md topDealers">
         <div className="container">
           <div className="row align-items-center" data-aos="fade-up">
@@ -223,7 +192,6 @@ const Home_V5 = () => {
               </div>
             </div>
           </div>
-          {/* End header */}
 
           <div className="row">
             <div className="col-lg-12">
@@ -238,9 +206,7 @@ const Home_V5 = () => {
           </div>
         </div>
       </section>
-      {/* End Discover Our Featured Dealers */}
 
-      {/* Explore property-city */}
       <section className="pb0-md pb0">
         <div className="container">
           <div
@@ -256,21 +222,16 @@ const Home_V5 = () => {
                 </p>
               </div>
             </div>
-            {/* End col-lg-9 */}
 
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
                 <Link className="ud-btn2" href="">
-                  {" "}
-                  {/*/map-v4"> */}
                   See All Cities
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
             </div>
-            {/* End col-lg-3 */}
           </div>
-          {/* End .row */}
 
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="300">
@@ -279,12 +240,9 @@ const Home_V5 = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
         </div>
       </section>
-      {/* End Explore property-city */}
 
-      {/* Explore Apartment Types cities */}
       <section className="pb90 pb30-md">
         <div className="container">
           <div className="row" data-aos="fade-up" data-aos-delay="0">
@@ -295,17 +253,13 @@ const Home_V5 = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
 
           <div className="row" data-aos="fade-up" data-aos-delay="300">
             <ApartmentTypes />
           </div>
-          {/* End .row */}
         </div>
       </section>
-      {/* End Explore Apartment Types cities */}
 
-      {/* Explore Apartment */}
       <section className="pb90 pb30-md bgc-thm-light">
         <div className="container">
           <div className="row">
@@ -319,16 +273,13 @@ const Home_V5 = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
 
           <div className="row">
             <Explore />
           </div>
         </div>
       </section>
-      {/* End Explore Apartment */}
 
-      {/* Our Testimonials */}
       <section className="pb0-md">
         <div className="container maxw1600">
           <div className="row  justify-content-center text-center align-items-center">
@@ -344,9 +295,7 @@ const Home_V5 = () => {
                 </p>
               </div>
             </div>
-            {/* End header */}
           </div>
-          {/* End .row */}
 
           <div className="row">
             <div className="col-lg-12">
@@ -361,13 +310,9 @@ const Home_V5 = () => {
           </div>
         </div>
       </section>
-      {/* End Our Testimonials */}
 
-      {/* Popular Property */}
       <PropertyListing />
-      {/* End  Popular Property */}
 
-      {/* Explore Blog */}
       <section className="pb0 pb30-md">
         <div className="container">
           <div className="row">
@@ -380,17 +325,13 @@ const Home_V5 = () => {
               </div>
             </div>
           </div>
-          {/* End .row */}
 
           <div className="row" data-aos="fade-up" data-aos-delay="300">
             <Blog />
           </div>
-          {/* End .row */}
         </div>
       </section>
-      {/* Explore Blog */}
 
-      {/* Our Partners */}
       <section className="our-partners pt0">
         <div className="container">
           <div className="row">
@@ -411,7 +352,6 @@ const Home_V5 = () => {
           </div>
         </div>
       </section>
-      {/* End Our Partners */}
 
       <section className="footer-style1 pt60 pb-0">
         <div className="container">
@@ -504,6 +444,7 @@ const Home_V5 = () => {
                 </div>
               </div>
             </div>
+
             <div className="col-sm-3 col-lg-3">
               <div className="footer-widget ">
                 <div className="link-style1 mb30">
@@ -536,11 +477,9 @@ const Home_V5 = () => {
         </div>
       </section>
 
-      {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">
         <Footer />
       </section>
-      {/* End Our Footer */}
     </>
   );
 };
