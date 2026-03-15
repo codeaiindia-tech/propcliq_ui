@@ -21,17 +21,6 @@ export default function PropertyFiltering() {
 
   const [pageContentTrac, setPageContentTrac] = useState([]);
 
-  useEffect(() => {
-    setPageItems(
-      sortedFilteredData.slice((pageNumber - 1) * 8, pageNumber * 8)
-    );
-    setPageContentTrac([
-      (pageNumber - 1) * 8 + 1,
-      pageNumber * 8,
-      sortedFilteredData.length,
-    ]);
-  }, [pageNumber, sortedFilteredData]);
-
   const [listingStatus, setListingStatus] = useState("All");
   const [propertyTypes, setPropertyTypes] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 100000]);
@@ -42,6 +31,28 @@ export default function PropertyFiltering() {
   const [yearBuild, setyearBuild] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const getPriceValue = (price) => {
+    if (typeof price !== "string") return 0;
+
+    const numericPrice = price.replace(/\$/g, "").replace(/,/g, "").trim();
+    const parsed = Number(numericPrice);
+
+    return Number.isNaN(parsed) ? 0 : parsed;
+  };
+
+  useEffect(() => {
+    setPageItems(
+      Array.isArray(sortedFilteredData)
+        ? sortedFilteredData.slice((pageNumber - 1) * 8, pageNumber * 8)
+        : []
+    );
+    setPageContentTrac([
+      (pageNumber - 1) * 8 + 1,
+      pageNumber * 8,
+      Array.isArray(sortedFilteredData) ? sortedFilteredData.length : 0,
+    ]);
+  }, [pageNumber, sortedFilteredData]);
 
   const resetFilter = () => {
     setListingStatus("All");
@@ -126,75 +137,80 @@ export default function PropertyFiltering() {
   };
 
   useEffect(() => {
-    const refItems = listings.filter((elm) => {
-      if (listingStatus == "All") {
-        return true;
-      } else if (listingStatus == "Buy") {
-        return !elm.forRent;
-      } else if (listingStatus == "Rent") {
-        return elm.forRent;
-      }
-    });
+    const refItems = Array.isArray(listings)
+      ? listings.filter((elm) => {
+          if (listingStatus == "All") {
+            return true;
+          } else if (listingStatus == "Buy") {
+            return !elm?.forRent;
+          } else if (listingStatus == "Rent") {
+            return elm?.forRent;
+          }
+          return true;
+        })
+      : [];
 
     let filteredArrays = [];
 
     if (propertyTypes.length > 0) {
       const filtered = refItems.filter((elm) =>
-        propertyTypes.includes(elm.propertyType)
+        propertyTypes.includes(elm?.propertyType)
       );
       filteredArrays = [...filteredArrays, filtered];
     }
+
     filteredArrays = [
       ...filteredArrays,
-      refItems.filter((el) => el.bed >= bedrooms),
+      refItems.filter((el) => Number(el?.bed || 0) >= bedrooms),
     ];
+
     filteredArrays = [
       ...filteredArrays,
-      refItems.filter((el) => el.bath >= bathroms),
+      refItems.filter((el) => Number(el?.bath || 0) >= bathroms),
     ];
+
     filteredArrays = [
       ...filteredArrays,
-      refItems.filter(
-        (el) =>
-          el.city
-            .toLocaleLowerCase()
-            .includes(searchQuery.toLocaleLowerCase()) ||
-          el.location
-            .toLocaleLowerCase()
-            .includes(searchQuery.toLocaleLowerCase()) ||
-          el.title
-            .toLocaleLowerCase()
-            .includes(searchQuery.toLocaleLowerCase()) ||
-          el.features
-            .join(" ")
-            .toLocaleLowerCase()
-            .includes(searchQuery.toLocaleLowerCase())
-      ),
+      refItems.filter((el) => {
+        const city = el?.city?.toLowerCase?.() || "";
+        const locationValue = el?.location?.toLowerCase?.() || "";
+        const title = el?.title?.toLowerCase?.() || "";
+        const features = Array.isArray(el?.features)
+          ? el.features.join(" ").toLowerCase()
+          : "";
+        const query = searchQuery.toLowerCase();
+
+        return (
+          city.includes(query) ||
+          locationValue.includes(query) ||
+          title.includes(query) ||
+          features.includes(query)
+        );
+      }),
     ];
 
     filteredArrays = [
       ...filteredArrays,
       !categories.length
         ? [...refItems]
-        : refItems.filter((elm) =>
-            categories.every((elem) => elm.features.includes(elem))
-          ),
+        : refItems.filter((elm) => {
+            const features = Array.isArray(elm?.features) ? elm.features : [];
+            return categories.every((elem) => features.includes(elem));
+          }),
     ];
 
     if (location != "All Cities") {
       filteredArrays = [
         ...filteredArrays,
-        refItems.filter((el) => el.city == location),
+        refItems.filter((el) => el?.city == location),
       ];
     }
 
     if (priceRange.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          Number(elm.price.split("$")[1].split(",").join("")) >=
-            priceRange[0] &&
-          Number(elm.price.split("$")[1].split(",").join("")) <= priceRange[1]
-      );
+      const filtered = refItems.filter((elm) => {
+        const priceValue = getPriceValue(elm?.price);
+        return priceValue >= priceRange[0] && priceValue <= priceRange[1];
+      });
       filteredArrays = [...filteredArrays, filtered];
     }
 
@@ -202,15 +218,17 @@ export default function PropertyFiltering() {
       console.log(squirefeet);
       const filtered = refItems.filter(
         (elm) =>
-          elm.sqft >= Number(squirefeet[0]) && elm.sqft <= Number(squirefeet[1])
+          Number(elm?.sqft || 0) >= Number(squirefeet[0]) &&
+          Number(elm?.sqft || 0) <= Number(squirefeet[1])
       );
       filteredArrays = [...filteredArrays, filtered];
     }
+
     if (yearBuild.length > 0) {
       const filtered = refItems.filter(
         (elm) =>
-          elm.yearBuilding >= Number(yearBuild[0]) &&
-          elm.yearBuilding <= Number(yearBuild[1])
+          Number(elm?.yearBuilding || 0) >= Number(yearBuild[0]) &&
+          Number(elm?.yearBuilding || 0) <= Number(yearBuild[1])
       );
       filteredArrays = [...filteredArrays, filtered];
     }
@@ -235,23 +253,20 @@ export default function PropertyFiltering() {
 
   useEffect(() => {
     setPageNumber(1);
+
     if (currentSortingOption == "Newest") {
       const sorted = [...filteredData].sort(
-        (a, b) => a.yearBuilding - b.yearBuilding
+        (a, b) => Number(a?.yearBuilding || 0) - Number(b?.yearBuilding || 0)
       );
       setSortedFilteredData(sorted);
     } else if (currentSortingOption.trim() == "Price Low") {
       const sorted = [...filteredData].sort(
-        (a, b) =>
-          a.price.split("$")[1].split(",").join("") -
-          b.price.split("$")[1].split(",").join("")
+        (a, b) => getPriceValue(a?.price) - getPriceValue(b?.price)
       );
       setSortedFilteredData(sorted);
     } else if (currentSortingOption.trim() == "Price High") {
       const sorted = [...filteredData].sort(
-        (a, b) =>
-          b.price.split("$")[1].split(",").join("") -
-          a.price.split("$")[1].split(",").join("")
+        (a, b) => getPriceValue(b?.price) - getPriceValue(a?.price)
       );
       setSortedFilteredData(sorted);
     } else {
@@ -270,23 +285,23 @@ export default function PropertyFiltering() {
 
           {/* start mobile filter sidebar */}
           <div
-            class="offcanvas offcanvas-start p-0"
-            tabindex="-1"
+            className="offcanvas offcanvas-start p-0"
+            tabIndex="-1"
             id="listingSidebarFilter"
             aria-labelledby="listingSidebarFilterLabel"
           >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="listingSidebarFilterLabel">
+            <div className="offcanvas-header">
+              <h5 className="offcanvas-title" id="listingSidebarFilterLabel">
                 Listing Filter
               </h5>
               <button
                 type="button"
-                class="btn-close text-reset"
+                className="btn-close text-reset"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="offcanvas-body p-0">
+            <div className="offcanvas-body p-0">
               <ListingSidebar filterFunctions={filterFunctions} />
             </div>
           </div>
