@@ -72,7 +72,7 @@ const Hero = () => {
                         <p className="mb30 slider-text text-white">
                           {item.description}
                         </p>
-                        <div className="slider-btn-block">
+                        {/* <div className="slider-btn-block">
                           <Link
                             href="/map-v4"
                             className="ud-btn btn-white slider-btn"
@@ -80,7 +80,7 @@ const Hero = () => {
                             View Details
                             <i className="fal fa-arrow-right-long" />
                           </Link>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
