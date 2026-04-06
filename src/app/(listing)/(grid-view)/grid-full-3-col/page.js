@@ -24,17 +24,23 @@ const GridFull3Col = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(paramsObj),
+      cache: "no-store"
     };
-    const res = await fetch(
-      `${process.env.baseUrl}/properties`,
-      requestOptions,
-      { cache: "no-store" }
-    );
-    const prop = await res.json();
-    setProperties(prop.data);
+    try {
+      const res = await fetch(
+        `${process.env.baseUrl}/properties`,
+        requestOptions
+      );
+      const prop = await res.json();
+      setProperties(prop.data);
+    } catch (error) {
+      console.log("Error fetching properties API :: ", error.message)
+    }
   };
 
   console.log("paramsObj:::::", paramsObj);
+
+  
   useEffect(() => {
     try {
       getProperties(paramsObj);
