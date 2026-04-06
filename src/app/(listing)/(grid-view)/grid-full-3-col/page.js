@@ -9,15 +9,31 @@ import MobileMenu from "@/components/common/mobile-menu";
 
 import ProperteyFiltering from "@/components/listing/grid-view/grid-full-3-col/ProperteyFiltering";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const GridFull3Col = () => {
   const [properties, setProperties] = useState([]);
   const urlParams = useSearchParams();
-  const paramsObj = Array.from(urlParams.keys()).reduce(
-    (acc, val) => ({ ...acc, [val]: urlParams.get(val) }),
-    {}
-  );
+  const base_url = process.env.NEXT_PUBLIC_BASE_URL
+
+  if(!base_url){
+    console.log("BASE URL IS MISSING")
+  }
+  
+  const paramObj = useMemo(()=>{
+    const obj = {}
+    for (const key of urlParams.keys()){
+      const value = urlParams.get(key)
+      
+      if(value && value.trim() !== "" ){
+        obj[key] = value
+      }
+
+    }
+
+    return obj
+
+  }, [urlParams])
 
   const getProperties = async (paramsObj) => {
     const requestOptions = {
@@ -28,26 +44,34 @@ const GridFull3Col = () => {
     };
     try {
       const res = await fetch(
-        `${process.env.baseUrl}/properties`,
+        `${base_url}/properties`,
         requestOptions
       );
-      const prop = await res.json();
-      setProperties(prop.data);
+      // const prop = await res.json();
+      // setProperties(prop.data);
+
+      if(!res.ok){
+        console.log("PROPERTIES API FAILED :: ", res.status, prop)
+        setProperties([])
+        return;
+      }
+
+      const prop = await res.json()
+
+      setProperties(Array.isArray(prop?.data) ? prop.data : [] )
+
     } catch (error) {
       console.log("Error fetching properties API :: ", error.message)
+      setProperties([])
     }
   };
 
-  console.log("paramsObj:::::", paramsObj);
+  console.log("paramObj:::::", paramObj);
 
-  
+
   useEffect(() => {
-    try {
-      getProperties(paramsObj);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+    getProperties(paramObj)
+  }, [paramObj]);
 
   return (
     <>
@@ -67,7 +91,7 @@ const GridFull3Col = () => {
             <div className="col-lg-12">
               <div className="breadcumb-style1">
                 <h2 className="title">
-                  {paramsObj.search}, {paramsObj.looking}, {paramsObj.location}{" "}
+                  {paramObj.search}, {paramObj.looking}, {paramObj.location}{" "}
                 </h2>
                 <div className="breadcumb-list">
                   <a href="#">Home</a>
